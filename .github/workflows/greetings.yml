@@ -6,11 +6,9 @@ jobs:
   greeting:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/first-interaction@v1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: 'Hi ! there!! thanks for your contribution!, you are awesome!'
-        pr-message: 'Hey what an input! give us a bit of time to review it! we will be in touch soon'
     - name: Print a greeting 
       env:
         MY_VAR: Hi there! My name is
@@ -19,3 +17,5 @@ jobs:
         LAST_NAME: Octocat
       run: |
         echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.:  
+      issue-message: 'Hi ! there!! thanks for your contribution!, you are awesome! - $FIRST_NAME $MIDDLE_NAME $LAST_NAME.'
+      pr-message: 'Hey what an input! give us a bit of time to review it! we will be in touch soon - $FIRST_NAME $MIDDLE_NAME $LAST_NAME.'
