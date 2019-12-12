@@ -11,3 +11,11 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: 'Hi ! there!! thanks for your contribution!, you are awesome!'
         pr-message: 'Hey what an input! give us a bit of time to review it! we will be in touch soon'
+    - name: Print a greeting 
+      env:
+        MY_VAR: Hi there! My name is
+        FIRST_NAME: Mona
+        MIDDLE_NAME: The
+        LAST_NAME: Octocat
+      run: |
+        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.:  
