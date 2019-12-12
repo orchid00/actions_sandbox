@@ -19,3 +19,5 @@ explore usage of github actions with an r package
 - [ ] simple package
 - [ ] github action for check
 - [ ] github action
+
+Test
