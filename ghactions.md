@@ -14,7 +14,8 @@ Note: this and other examples are on the Github actions repo:
 The parts that were tricky to understand:
 
 `on` can be `issues`, `pull`, `pull_request` you can use one or many as `[pull, pull_request]`
-`uses`: `actions/checkout@master` or for the first ``
+`uses`: `actions/checkout@master` or for the first `actions/first-interaction@v1`
+
 
 Note: the full documentation can be found here:
 [https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)
