@@ -77,5 +77,5 @@ The parts of the yaml file that were tricky to understand:
 Note: the full documentation can be found here:
 [https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)
 
-More on other nitty vignette: [https://github.com/ropenscilabs/CIsandbox/blob/master/github-actions-yaml-description.Rmd](https://github.com/ropenscilabs/CIsandbox/blob/master/github-actions-yaml-description.Rmd).
+More on other nifty vignette: [https://github.com/ropenscilabs/CIsandbox/blob/master/github-actions-yaml-description.Rmd](https://github.com/ropenscilabs/CIsandbox/blob/master/github-actions-yaml-description.Rmd).
 
