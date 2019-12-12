@@ -3,15 +3,16 @@
 GitHub actions are a cool way to trigger actions for you in an automated way, to help with any your process on your github repos.
 For example, an action can be a message every time a new issue comes up.
 
-Actions follow the steps on a `yaml` file. You can find the yaml code for issue messages here:
+GitHub actions follow the steps on a `yaml` file, which is usually located on the `.github/workflows` folder of your repo. You can find the `yaml` code for issue messages here:
 https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesmessage.yaml
 
-If you feel like finding other Github actions, there's actually a place for them called the Github Marketplace
-[https://github.com/marketplace?type=actions](https://github.com/marketplace?type=actions)
-
-
-Note: this and other examples are on the Github actions repo: 
+Note: this and other examples are located on the Github actions repo: 
 [https://github.com/actions/github](https://github.com/actions/github)
+which serve as the actions-toolkit for common GitHub automations. 
+
+If you feel like finding more actions, that will help not only automating GitHub processess but programming language specific actions, you can dive into the Github Marketplace
+[https://github.com/marketplace?type=actions](https://github.com/marketplace?type=actions)
+which will point you to thousands of actions provided by the community. 
 
 The parts that were tricky to understand:
 
