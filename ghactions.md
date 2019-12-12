@@ -13,5 +13,12 @@ Note: this and other examples are on the Github actions repo:
 
 The parts that were tricky to understand:
 
-`on` can be `issues`, `pull`, `pull_request` you can use one or many as list [pull, pull_request]
+`on` can be `issues`, `pull`, `pull_request` you can use one or many as `[pull, pull_request]`
+`uses`: `actions/checkout@master` or for the first ``
+
+Note: the full documentation can be found here:
+[https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)
+
+Note: R github actions examples can be found here:
+[https://github.com/r-lib/actions/tree/master/examples](https://github.com/r-lib/actions/tree/master/examples)
 
