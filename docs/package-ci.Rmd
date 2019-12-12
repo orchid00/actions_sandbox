@@ -1,0 +1,40 @@
+---
+title: "package-ci"
+author: "Murray Cadzow"
+date: "12/12/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+
+create a package
+```{r}
+usethis::create_package()
+```
+
+create a readme
+```{r}
+usethis::use_readme_md()
+```
+
+
+- create a blank repository on github
+
+add the github remote
+```{r}
+usethis::use_github("username/repo")
+```
+
+Fill in the description with the github urls
+```{r}
+usethis::use_github_links()
+use_github_action()
+```
+
+This creates the required files for using the github action that runs devtools::check() on github and includes a badge in your readme
+
+Now git add, commit the changes and push them to your repo and the action will run.
