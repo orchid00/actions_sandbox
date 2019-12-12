@@ -53,26 +53,29 @@ To understand the parts of the `yaml` see below.
 
 ### The more programatic way
 
-In `R` @jennybc + @jimhester are working to add github action functionalities to the {usethis} package here: https://usethis.r-lib.org/reference/github_actions.html and that is grand!
-We learned: 
-that you need to install the new (as of December 2019) in development version of usethis from github, and follow this awesome vignette:
+In `R` @jimhester is working to add github action functionalities to the `{usethis}` package here: [https://usethis.r-lib.org/reference/github_actions.html](https://usethis.r-lib.org/reference/github_actions.html) and that is a grand start!
+
+We've learned: 
+* Need to install the new (as of December 2019) in development version of `{usethis}` from GitHub
+* Follow this awesome vignette:
 [https://github.com/ropenscilabs/CIsandbox/blob/master/docs/package-ci.Rmd](https://github.com/ropenscilabs/CIsandbox/blob/master/docs/package-ci.Rmd)
-
-### Understanding parts of the yaml file
-
-The parts that were tricky to understand from the yaml file:
-
-`on` can be `issues`, `pull`, `pull_request` you can use one or many as `[pull, pull_request]`
-`uses`: `actions/checkout@master` or for the first `actions/first-interaction@v1`
-
-
-Note: the full documentation can be found here:
-[https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)
-
-### R and GitHub actions
 
 Note: R github actions examples can be found here:
 [https://github.com/r-lib/actions/tree/master/examples](https://github.com/r-lib/actions/tree/master/examples)
 
-https://usethis.r-lib.org/reference/github_actions.html?q=#arguments
+To start understanding the arguments here is a innitial help documentation for the `use_github_action(` function and similar functions 
+[https://usethis.r-lib.org/reference/github_actions.html?q=#arguments](https://usethis.r-lib.org/reference/github_actions.html?q=#arguments).
+
+### Understanding parts of the yaml file
+
+The parts of the yaml file that were tricky to understand:
+
+`on` can be `issues`, `pull`, `pull_request` you can use one or many as `[pull, pull_request]`
+
+`uses`: `actions/checkout@master` or for the first `actions/first-interaction@v1`
+
+Note: the full documentation can be found here:
+[https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)
+
+More on other nitty vignette: [https://github.com/ropenscilabs/CIsandbox/blob/master/github-actions-yaml-description.Rmd](https://github.com/ropenscilabs/CIsandbox/blob/master/github-actions-yaml-description.Rmd).
 
