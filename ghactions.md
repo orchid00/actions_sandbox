@@ -6,6 +6,29 @@ For example, an action can be a message every time a new issue comes up.
 GitHub actions follow the steps on a `yaml` file, which is usually located on the `.github/workflows` folder of your repo. You can find the `yaml` code for issue messages here:
 https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesmessage.yaml
 
+<details><summary>CLICK ME</summary>
+  <p>
+```yaml
+name: Triage
+on:
+  issues:
+    types: [opened]
+jobs:
+  commentOnNewIssues:
+    name: Comment On New Issues
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Comment On New Issues
+        uses: actions/github@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: comment "Thanks for your issue! we are going to work on that"
+```
+  </p>
+</details>
+
 Note: this and other examples are located on the Github actions repo: 
 [https://github.com/actions/github](https://github.com/actions/github)
 which serve as the actions-toolkit for common GitHub automations. 
