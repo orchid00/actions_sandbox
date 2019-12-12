@@ -9,22 +9,22 @@ https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesme
 <details><summary>CLICK ME</summary>
   <p>
 ```
-name: Triage
-on:
-  issues:
-    types: [opened]
-jobs:
-  commentOnNewIssues:
-    name: Comment On New Issues
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Comment On New Issues
-        uses: actions/github@v1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: comment "Thanks for your issue! we are going to work on that"
+        name: Triage
+        on:
+          issues:
+            types: [opened]
+        jobs:
+          commentOnNewIssues:
+            name: Comment On New Issues
+            runs-on: ubuntu-latest
+            steps:
+              - uses: actions/checkout@master
+              - name: Comment On New Issues
+                uses: actions/github@v1.0.0
+                env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                with:
+                  args: comment "Thanks for your issue! we are going to work on that"
 ```
   </p>
 </details>
