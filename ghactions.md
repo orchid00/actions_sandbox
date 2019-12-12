@@ -19,6 +19,10 @@ The parts that were tricky to understand:
 Note: the full documentation can be found here:
 [https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)
 
+### R and GitHub actions
+
 Note: R github actions examples can be found here:
 [https://github.com/r-lib/actions/tree/master/examples](https://github.com/r-lib/actions/tree/master/examples)
+
+https://usethis.r-lib.org/reference/github_actions.html?q=#arguments
 
