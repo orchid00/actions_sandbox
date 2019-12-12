@@ -8,7 +8,7 @@ https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesme
 
 <details><summary>CLICK ME</summary>
   <p>
-```yaml
+```
 name: Triage
 on:
   issues:
