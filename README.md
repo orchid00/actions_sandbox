@@ -12,6 +12,7 @@ Team members:
 * David
 * Murray
 * Paula
+* Rhydwyn
 
 explore usage of github actions with an r package
 
