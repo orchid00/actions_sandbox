@@ -45,6 +45,8 @@ Need command to add for the github action
 
 ## Automatically create pkgdown documentation
 
+Derived from: https://pkgdown.r-lib.org/reference/deploy_site_github.html
+
 First we need to create an empty gh-pages branch. In bash:
 
 ```
