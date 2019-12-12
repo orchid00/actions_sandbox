@@ -1,12 +1,12 @@
 ## What are GitHub actions?
 
-GitHub actions are a cool way to trigger actions for you in an automated way, to help with any your process on your github repos.
+GitHub actions are a cool way to trigger actions for you in an automated way, to help with any of your processes on your github repos.
 For example, an action can be a message every time a new issue comes up.
 
 GitHub actions follow the steps on a `yaml` file, which is usually located on the `.github/workflows` folder of your repo. You can find the `yaml` code for issue messages here:
 https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesmessage.yaml
 
-<details><summary>CLICK ME</summary>
+<details><summary>click me code</summary>
   <p>
 
 
@@ -32,13 +32,35 @@ https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesme
 
 Note: this and other examples are located on the Github actions repo: 
 [https://github.com/actions/github](https://github.com/actions/github)
-which serve as the actions-toolkit for common GitHub automations. 
+which serve as the actions-toolkit for common _GitHub automations_. 
 
-If you feel like finding more actions, that will help not only automating GitHub processess but programming language specific actions, you can dive into the Github Marketplace
+If you feel like finding _more actions_, that will help not only automating GitHub processess but programming-language-specific actions, you can dive into the Github Marketplace
 [https://github.com/marketplace?type=actions](https://github.com/marketplace?type=actions)
-which will point you to thousands of actions provided by the community. 
+which will point you to thousands of actions provided by the community.
 
-The parts that were tricky to understand:
+:tada: 
+Now you know that are GitHub actions, and where to find more information about those!
+
+## How to create new GitHub actions?
+
+### The non-programatic way 
+
+Go to any repo you _own_ and you will find the "Actions" menu. 
+Click on New workflow and pick one form the templates provided.
+You can modify the `yaml` to adapt your needs.
+
+To understand the parts of the `yaml` see below.
+
+### The more programatic way
+
+In `R` @jennybc + @jimhester are working to add github action functionalities to the {usethis} package here: https://usethis.r-lib.org/reference/github_actions.html and that is grand!
+We learned: 
+that you need to install the new (as of December 2019) in development version of usethis from github, and follow this awesome vignette:
+[https://github.com/ropenscilabs/CIsandbox/blob/master/docs/package-ci.Rmd](https://github.com/ropenscilabs/CIsandbox/blob/master/docs/package-ci.Rmd)
+
+### Understanding parts of the yaml file
+
+The parts that were tricky to understand from the yaml file:
 
 `on` can be `issues`, `pull`, `pull_request` you can use one or many as `[pull, pull_request]`
 `uses`: `actions/checkout@master` or for the first `actions/first-interaction@v1`
