@@ -38,3 +38,30 @@ use_github_action()
 This creates the required files for using the github action that runs devtools::check() on github and includes a badge in your readme
 
 Now git add, commit the changes and push them to your repo and the action will run.
+
+## Automatically document package
+
+Need command to add for the github action
+
+## Automatically create pkgdown documentation
+
+First we need to create an empty gh-pages branch. In bash:
+
+```
+git checkout --orphan gh-pages
+git rm -rf .
+git commit --allow-empty -m 'Initial gh-pages commit'
+git push origin gh-pages
+git checkout master
+```
+
+Now we can add in pkgdown
+```{r}
+use_pkgdown()
+```
+
+Then we want to add in the github action for pkgdown to automatically add documentation
+```{r}
+usethis:::use_github_action(url = "https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml")
+```
+
