@@ -9,6 +9,20 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(eval = FALSE)
 ```
+# Example workflow CI for packages
+
+This is an example workflow to create a package and use Github actions apply continuous integration to automatically check and test packages upon a git push.
+
+Github actions are included in the dev version of `usethis` which can be installed from github using
+
+```{r}
+# install.packages("devtools")
+devtools::install_github("r-lib/usethis")
+```
+
+
+## Package setup
+
 
 
 create a package
@@ -16,11 +30,10 @@ create a package
 usethis::create_package()
 ```
 
-create a readme
+initialise git repository
 ```{r}
-usethis::use_readme_md()
+usethis::use_git()
 ```
-
 
 - create a blank repository on github
 
@@ -28,6 +41,19 @@ add the github remote
 ```{r}
 usethis::use_github("username/repo")
 ```
+
+create a readme
+```{r}
+usethis::use_readme_md()
+```
+
+create a licence
+```{r}
+# use of MIT licence
+use_mit_license()
+```
+
+
 
 Fill in the description with the github urls
 ```{r}
