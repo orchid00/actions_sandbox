@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of CIsandbox is to ...
+The goal of CIsandbox is to test some github actions with R and secrets
 
 Team members: 
 * Saras
