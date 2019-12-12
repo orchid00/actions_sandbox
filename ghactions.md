@@ -7,6 +7,9 @@ Actions follow the steps on a `yaml` file
 
 You can find the yaml code for issue messages here:
 https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesmessage.yaml
+Or look at the Github Marketplace
+[https://github.com/marketplace?type=actions](https://github.com/marketplace?type=actions)
+
 
 Note: this and other examples are on the Github actions repo: 
 [https://github.com/actions/github](https://github.com/actions/github)
