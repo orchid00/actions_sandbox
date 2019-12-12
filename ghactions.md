@@ -8,7 +8,8 @@ https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesme
 
 <details><summary>CLICK ME</summary>
   <p>
-```
+
+
         name: Triage
         on:
           issues:
@@ -25,7 +26,7 @@ https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesme
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 with:
                   args: comment "Thanks for your issue! we are going to work on that"
-```
+
   </p>
 </details>
 
