@@ -1,10 +1,11 @@
 
 
-```{r setup1, include=FALSE}
+# Example workflow to set up continuous integration for packages
+
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(eval = FALSE)
 ```
-# Example workflow CI for packages
 
 This is an example workflow to create a package and use Github actions apply continuous integration to automatically check and test packages upon a git push.
 
@@ -15,12 +16,11 @@ Github actions are included in the dev version of `usethis` which can be install
 devtools::install_github("r-lib/usethis")
 ```
 
-
 ## Package setup and connect with Github
 
 ### New project, Github first
 
-Follow instructions https://happygitwithr.com/new-github-first.html#new-github-first
+Follow instructions for setting up a new project with [happygitwithr](https://happygitwithr.com/new-github-first.html#new-github-first)
 
 Create a package
 ```{r}
@@ -29,44 +29,62 @@ usethis::create_package(path = "path-to-project")
 
 ### Existing package with github
 
-Make sure that you have github setup with your package.
+Make sure that you have GitHub set up with your package.
 
 [Existing project and package, github first](https://happygitwithr.com/existing-github-first.html#existing-github-first)
 [Existing project and package, github last](https://happygitwithr.com/existing-github-last.html#existing-github-last)
 
-## Add github action for package release-check
+Before initiating GitHub actions, you'll need to point to where your GitHub instance is located. The following function populates the URL and BugReports fields of a GitHub-using R package DESCRIPTION file with links to GitHub. If your project is hosted by an enterprise GitHub server you'll need to modify the input arguments. 
 
+```{r}
+usethis::use_github_links()
+```
 
+## Actions for continuous integration checks
+
+### release-check
+
+This option checks your work using 
 ```{r}
 usethis::use_github_actions()
 ```
 
-This creates the required files for using the github action that runs the release-check for a package on github and includes the code to add the badge in your readme.
+This creates the required yaml file in `.github/workflows/` for using the GitHub action that runs the release-check for a package on gitGitHubhub and includes the code to add the badge in your readme.
 
-Now git add, commit the changes and push them to your repo and the action will run.
+Now git add, commit the changes and push them to your repo and the action will run! 
 
+## secrets
+copy the token. go to settings, secrets, add new secret. 
 
-## Automatically create pkgdown documentation
+## So what's actually going on in the yaml file?
 
-Derived from: https://pkgdown.r-lib.org/reference/deploy_site_github.html
+When we ran `usethis::use_github_actions` we generated a `R-CMD-check.yaml` file in the `.github/workflows` folder. YAML is a configuration file that's meant to be read by both humans and machines. In this case, the YAML file tells GitHub what we want the action to do. Let's dig into the contents of this file to see what's going on:
 
-First we need to create an empty gh-pages branch. In bash:
+<details><summary>click me code</summary>
+  <p>
+  
+    on: [push, pull_request]
+  
+    name: R-CMD-check
 
-```
-git checkout --orphan gh-pages
-git rm -rf .
-git commit --allow-empty -m 'Initial gh-pages commit'
-git push origin gh-pages
-git checkout master
-```
+    jobs:
+    R-CMD-check:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@master
+      - name: Install dependencies
+    run: Rscript -e "install.packages(c('remotes', 'rcmdcheck'))" -e "remotes::install_deps(dependencies = TRUE)"
+      - name: Check
+    run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
+        
+  </p>
+</details>
 
-Now we can add in pkgdown
-```{r}
-use_pkgdown()
-```
+You can find full documentation about these parameters on [GitHub](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions), but we'll highlight a few key points here:
 
-Then we want to add in the github action for pkgdown to automatically add documentation
-```{r}
-usethis:::use_github_action(url = "https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml")
-```
-
+* The `on` parameter tells GitHub what should trigger this action. In this case, we want to check code whenever it is pushed, or on a pull request. The latter is particularly useful because if we're about to merge code into the master branch, we want it to pass tests!
+* The `name` of the action should be something that helps us identify at a glance what the action is doing. This is shown on github.com in the Actions tab of the repository.
+* `runs-on` tells GitHub what sort of environment should run the job. These environments are called "runners". GitHub supports Ubuntu, macOS and Windows Server, as well as support for self-hosted runners.
+* `uses` allows us to run other actions as part of our action. In this case, we're calling on actions that are defined in other repositories. The first action checks out the contents of our repository, and then next sets up R.
+* The remaining steps are the commands we want to run as part of our action, each with a name. Here we're installing the dependencies of our package, as well as the `rcmdcheck` package we use to check the package in our repository. Finally, we're executing the command that checks the package.
