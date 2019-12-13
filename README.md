@@ -1,61 +1,38 @@
 
-# Getting started with GitHub Actions
+# Getting started with GitHub actions
 
-The goal of CIsandbox is to test some github actions with R. 
+The goal of actions_sandbox is to explore some GitHub actions with R. 
 
 ## What are GitHub actions?
 
 GitHub actions allow us to trigger automated steps after we launch GitHub interactions such as when we push, pull, submit a pull request, or write an issue. 
 
-Some example actions that we can implement:
+For example, there are actions that will automatically trigger:
 
-- replace [Travis](travis.com) for continuous integration (CI)
-- trigger automated messages every time a new issue is written or a pull request is initiated
-- check if you code works of different OS
+- continuous integration (CI)
+- messages in response to issues or pull requests
+- rendering/compiling eg. of bookdown, blogdowns etc
 
-## Quick start
+GitHub actions follow the steps designated in a `yaml` file, which we place in the `.github/workflows` folder of the repo. 
+We can add these `yaml` files to our repo either by clicking on a series of steps on GitHub.com, or using wrapper functions provided by the `usethis` package, depending on which actions you which to include.
+We describe both ways here. 
 
-GitHub actions follow the steps designated in a `yaml` file, which is located in the `.github/workflows` folder of your repo.  
+### Meet the team members 
 
-### The non-programatic way 
+* 🤓 [Chris Brown](https://github.com/CStats) 🐦 [\@CStatsAU](https://twitter.com/CStatsAU)
+* 🤓 [Murray Cadzow](https://github.com/murraycadzow) 🐦 [\@Rhydwyn McGuire](https://twitter.com/murraycadzow)
+* 🤓 [Paula A Martinez](https://github.com/orchid00) 🐦 [\@orchid00](https://twitter.com/orchid00)
+* 🤓 [Rhydwyn McGuire](https://github.com/rhydwyn) 🐦 [\@rhydwyn](https://twitter.com/rhydwyn)
+* 🤓 [David Neuzerling](https://github.com/mdneuzerling) 🐦 [\@mdneuzerling](https://twitter.com/mdneuzerling)
+* 🤓 [David Wilkinson](https://github.com/Doi90)
+* 🤓 [Saras Windecker](https://github.com/smwindecker) 🐦 [\@smwindecker](https://twitter.com/smwindecker)
 
-Go to any repo you _own_ and you will find "Actions" on the top menu. 
-Click on "New Workflow" and pick one from the templates provided.
-You can modify the `yaml` to adapt the action, such as the message.
+![team](team.jpeg)
 
-### The more programatic way
+## Meta
 
-In `R` @jimhester is working to add github action functionalities to the development version of the [`usethis` package](https://usethis.r-lib.org/reference/github_actions.html), which is a grand start! A few actions have specific `usethis` functions associated with them, for example those associated with continuous integration. We step through these in the following RMarkdown file: 
+* Please [report any issues or bugs](https://github.com/ropenscilabs/CIsandbox/issues).
+* License: MIT
+* Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-- set up continuous integration [here](https://github.com/ropenscilabs/CIsandbox/blob/master/docs/package-ci.Rmd)
-- set up continuous integration with a reproducible environment using `renv` [here](https://github.com/ropenscilabs/CIsandbox/blob/master/docs/testing_with_renv.Rmd)
-
-You can also access other actions that not only automate GitHub processess but provide programming-language-specific options at the GitHub [Marketplace](https://github.com/marketplace?type=actions). We demonstrate using some of these in other actions in the following RMarkdown files:
-
-
-
-## More information and useful links
-
-- R specific GitHub actions [examples](https://github.com/r-lib/actions/tree/master/examples) from r-lib
-- `use_github_action` function and similar functions help [documentation](https://usethis.r-lib.org/reference/github_actions.html?q=#arguments) 
-- [Glossary of actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/core-concepts-for-github-actions)
-- [Workflow syntax for GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)
-
-:tada: 
-Now you know that are GitHub actions, and where to find more information about those!
-
----
-
-Note: the [r-lib/ghactions](https://github.com/r-lib/ghactions) repo is deprecated!
-
-
-### Meet the team members
-
-* Chris Brown
-* Murray Cadzow
-* Paula A Martinez
-* Rhydwyn McGuire
-* David Neuzerling
-* David Wilkinson
-* Saras Windecker
-
+[![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
