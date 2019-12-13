@@ -38,6 +38,7 @@ You can also access other actions that not only automate GitHub processess but p
 
 - R specific GitHub actions [examples](https://github.com/r-lib/actions/tree/master/examples) from r-lib
 - `use_github_action` function and similar functions help [documentation](https://usethis.r-lib.org/reference/github_actions.html?q=#arguments) 
+- [Glossary of actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/core-concepts-for-github-actions)
 - [Workflow syntax for GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)
 
 :tada: 
