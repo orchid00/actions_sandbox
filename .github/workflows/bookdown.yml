@@ -28,19 +28,31 @@ jobs:
           name: _book
           path: _book/
   
-  ghpages_deploy:
-    name: deploy
-    needs: bookdown
+  #ghpages_deploy:
+  #  name: deploy
+  #  needs: bookdown
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Download _book
+  #      uses: actions/download-artifact@v1
+  #      with:
+  #        name: _book
+  #    - name: deploy
+  #      uses: maxheld83/ghpages@v0.2.1
+  #      env:
+  #        BUILD_DIR: "_book"
+
+
+  checkout-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Download _book
-        uses: actions/download-artifact@v1
-        with:
-          name: _book
-      - name: deploy
-        uses: maxheld83/ghpages@v0.2.1
-        env:
-          BUILD_DIR: "_book"
-
-          
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Deploy to GitHub Pages
+      uses: Cecilapp/GitHub-Pages-deploy@master
+      env:
+        EMAIL: murray.cadzow@otago.ac.nz               # must be a verified email
+        GH_TOKEN: ${{ secrets.GITHUB_PAT }} # https://github.com/settings/tokens
+        BUILD_DIR: _book/                     # "_site/" by default
+    
  
