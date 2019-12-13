@@ -47,7 +47,7 @@ jobs:
      - name: Deploy to GitHub Pages
        uses: Cecilapp/GitHub-Pages-deploy@master
        env:
-          EMAIL: murray.cadzow@otago.ac.nz               # must be a verified email
+          EMAIL: ${{ secrets.EMAIL}}               # must be a verified email
           GH_TOKEN: ${{ secrets.GITHUB_PAT }} # https://github.com/settings/tokens
           BUILD_DIR: _book/                     # "_site/" by default
     
