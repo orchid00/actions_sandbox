@@ -3,3 +3,7 @@
 .RData
 .Ruserdata
 *.html
+_book/
+*.rds
+libs/
+*.bib
