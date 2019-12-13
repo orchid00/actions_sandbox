@@ -1,0 +1,34 @@
+on:
+  push:
+     branches:
+       - master
+  pull_request:
+     branches:
+       - master
+  
+
+name: Render-book
+
+jobs:
+  render:
+  name: Render Book
+  runs-on: macOS-latest
+  steps:
+    - uses: actions/checkout@v1
+    - uses: r-lib/actions/setup-r@v1
+    - uses: r-lib/actions/setup-pandoc@v1
+    - name: Install rmarkdown
+      run: Rscript -e 'install.packages(c("rmarkdown","bookdown")'
+    - name: Render Book
+      run: Rscript -e 'bookdown::render_book("index.Rmd")'
+    #- name: Commit results
+    #   run: |
+    #     git commit examples/README.md -m 'Re-build README.Rmd' || echo "No changes to commit"
+    #     git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
+    # - name: commit
+    #   run: |
+    #     git add \*.R
+    #     git commit -m 'style'
+    #     - uses: r-lib/actions/pr-push@master
+    #     with:
+    #       repo-token: ${{ secrets.GITHUB_TOKEN }}
