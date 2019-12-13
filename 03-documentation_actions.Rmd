@@ -11,7 +11,7 @@ Derived from: https://pkgdown.r-lib.org/reference/deploy_site_github.html
 
 First we need to create an empty gh-pages branch. In bash:
   
-  ```
+```
 git checkout --orphan gh-pages
 git rm -rf .
 git commit --allow-empty -m 'Initial gh-pages commit'
@@ -35,5 +35,64 @@ usethis:::use_github_action(url = "https://raw.githubusercontent.com/r-lib/actio
 N.B. The usethis function is not currently exported into the NAMESPACE of `usethis` but is documented.
 
 ## Action to deploy a bookdown site
+
+Bookdown yaml
+```
+on:
+  push:
+     branches:
+       - master
+  pull_request:
+     branches:
+       - master
+  
+
+name: renderbd
+
+jobs:
+  bookdown:
+    name: Render-Book
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: Install rmarkdown
+        run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
+      - name: Render Book
+        run: Rscript -e 'bookdown::render_book("index.Rmd")'
+      - name: ls
+        run: "ls _book ; pwd"
+      - uses: actions/upload-artifact@v1
+        with:
+          name: _book
+          path: _book/
+  
+# Need to first create an empty gh-pages branch
+# see https://pkgdown.r-lib.org/reference/deploy_site_github.html
+# and also add secrets for a GITHUB_PAT and EMAIL to the repository
+  checkout-and-deploy:
+   runs-on: ubuntu-latest
+   needs: bookdown
+   steps:
+     - name: Checkout
+       uses: actions/checkout@master
+     - name: Download artifact
+       uses: actions/download-artifact@v1.0.0
+       with:
+        # Artifact name
+         name: _book # optional
+    # Destination path
+         path: _book # optional
+    # artifact source
+    
+     - name: Deploy to GitHub Pages
+       uses: Cecilapp/GitHub-Pages-deploy@master
+       env:
+          EMAIL: ${{ secrets.EMAIL}}               # must be a verified email
+          GH_TOKEN: ${{ secrets.GITHUB_PAT }} # https://github.com/settings/tokens
+          BUILD_DIR: _book/                     # "_site/" by default
+    
+```
 
 ## Action to deploy blogdown site
