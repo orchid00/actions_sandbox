@@ -31,7 +31,7 @@ Follow instructions https://happygitwithr.com/new-github-first.html#new-github-f
 
 Create a package
 ```{r}
-usethis::create_package(path = "packagename")
+usethis::create_package(path = "path-to-project")
 ```
 
 ### Existing package with github
@@ -41,21 +41,17 @@ Make sure that you have github setup with your package.
 [Existing project and package, github first](https://happygitwithr.com/existing-github-first.html#existing-github-first)
 [Existing project and package, github last](https://happygitwithr.com/existing-github-last.html#existing-github-last)
 
-## Add github action for release-check
+## Add github action for package release-check
 
-Fill in the description with the github urls
+
 ```{r}
-usethis::use_github_links()
 usethis::use_github_actions()
 ```
 
-This creates the required files for using the github action that runs devtools::check() on github and includes a badge in your readme
+This creates the required files for using the github action that runs the release-check for a package on github and includes the code to add the badge in your readme.
 
 Now git add, commit the changes and push them to your repo and the action will run.
 
-## Automatically document package
-
-Need command to add for the github action
 
 ## Automatically create pkgdown documentation
 
