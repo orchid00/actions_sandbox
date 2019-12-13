@@ -7,10 +7,10 @@ knitr::opts_chunk$set(echo = TRUE, cache = FALSE, eval = FALSE)
 As part of this project some community contributions came up!
 
 * Issue [Spontaneous repository issues with setup-r using ubuntu-latest runner](https://github.com/r-lib/actions/issues/25) 
-to `r-lib/actions` from @mdneuzerling
+to `r-lib/actions` from `@mdneuzerling`
 
-* PR [export use_github_action function](https://github.com/r-lib/usethis/pull/958) to `r-lib/usethis` from @smwindecker 
+* PR [export use_github_action function](https://github.com/r-lib/usethis/pull/958) to `r-lib/usethis` from `@smwindecker`
 
-* PR [adds skip_on_gh_actions (resolves #970)](https://github.com/r-lib/testthat/pull/975) to `r-lib/testthat` from @njtierney
+* PR [adds skip_on_gh_actions (resolves #970)](https://github.com/r-lib/testthat/pull/975) to `r-lib/testthat` from `@njtierney`
 
 # :fireworks::fireworks::fireworks::fireworks:
