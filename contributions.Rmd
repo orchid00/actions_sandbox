@@ -13,4 +13,4 @@ to `r-lib/actions` from `@mdneuzerling`
 
 * PR [adds skip_on_gh_actions (resolves #970)](https://github.com/r-lib/testthat/pull/975) to `r-lib/testthat` from `@njtierney`
 
-# :fireworks::fireworks::fireworks::fireworks:
+
