@@ -1,11 +1,6 @@
----
-title: "Github actions yaml description"
-author: "David Neuzerling"
-date: "12/12/2019"
-output: html_document
----
+# Github actions
 
-```{r setup, include=FALSE}
+```{r setup2, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = FALSE, eval = FALSE)
 ```
 

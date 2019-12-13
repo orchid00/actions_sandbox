@@ -1,13 +1,6 @@
----
-title: "package-ci"
-author: "Murray Cadzow"
-date: "12/12/2019"
-output: 
- html_document:
-   toc: yes
----
 
-```{r setup, include=FALSE}
+
+```{r setup1, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(eval = FALSE)
 ```
