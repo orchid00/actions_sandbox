@@ -6,35 +6,64 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 ## So what's actually going on in the yaml file?
 
-You can find the `yaml` code for issue messages here:
-https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesmessage.yaml
+Note: you can use `.yml` or `.yaml` as extension of your file for your workflow. 
+
+Let's explore the `yaml` code for the first issue message here:
 
 <details><summary>click me code</summary>
   <p>
 
+        name: Greetings
 
-        name: Triage
-        on:
-          issues:
-            types: [opened]
+        on: [pull_request, issues]
+
         jobs:
-          commentOnNewIssues:
-            name: Comment On New Issues
+          greeting:
             runs-on: ubuntu-latest
             steps:
-              - uses: actions/checkout@master
-              - name: Comment On New Issues
-                uses: actions/github@v1.0.0
-                env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                with:
-                  args: comment "Thanks for your issue! we are going to work on that"
-
+            - uses: actions/first-interaction@v1
+              with:
+                repo-token: ${{ secrets.GITHUB_TOKEN }}
+                issue-message: 'Hi ! there!! thanks for your contribution!, you are awesome! '
+                pr-message: 'Hey what an input! please give us a bit of time to review it! We will be in touch soon.'
   </p>
 </details>
 
-The parts of the yaml file that were tricky to understand:
+or here [https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/greetings.yml](https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/greetings.yml).
 
-`on` can be `issues`, `pull`, `pull_request` you can use one or many as `[pull, pull_request]`
+Translated that says,  the workflow action **name** is 'Greetings' is triggered on pull requests and issues. It will start a job
+with the name greeting, and will run on a [runner](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/core-concepts-for-github-actions#runner) for the example it is called ubuntu-latest. Then, each job has [steps](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/core-concepts-for-github-actions#step) that will set up the environment in the runner with a few options. See more about the [syntax](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions).
 
-`uses`: `actions/checkout@master` or for the first `actions/first-interaction@v1`
+A few examples:
+
+    `on` can be `issues`, `pull`, `pull_request` you can use one or many as `[pull, pull_request]`
+
+    `uses`: `actions/checkout@master` or for the first `actions/first-interaction@v1`
+
+### R Syntax options
+
+Change the <customise bits>
+
+on:
+  push:
+
+name: <nameyouraction>
+
+jobs:
+  render:
+    name: <nameyourjob>
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: <namestep1>
+        run: Rscript -e 'install.packages("<the package you need>")'
+      - name: <namestep2>
+        run: Rscript -e 'rmarkdown::render("examples/README.Rmd")'
+      - name: <namestep3>
+        run: |
+          git commit <some file>.md -m 'Re-build <file>.Rmd' || echo "No changes to commit"
+          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
+
+
