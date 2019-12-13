@@ -22,7 +22,7 @@ jobs:
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
       - name: ls
-        run: ls ./
+        run: "ls _book ; pwd"
       - uses: actions/upload-artifact@v1
         with:
           name: _book
