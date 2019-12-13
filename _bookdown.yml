@@ -1,5 +1,6 @@
 book_filename: "github_actions_with_r"
 new_session: true
+output_dir: "docs"
 delete_merged_file: true
 language:
   ui:
