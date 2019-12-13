@@ -36,20 +36,23 @@ You can also access other actions that not only automate GitHub processess but p
 
 ## More information and useful links
 
-- GitHub actions [examples](https://github.com/r-lib/actions/tree/master/examples)
-- `use_github_action(` function and similar functions help [documentation](https://usethis.r-lib.org/reference/github_actions.html?q=#arguments) 
-- [full documentation](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)
+- R specific GitHub actions [examples](https://github.com/r-lib/actions/tree/master/examples) from r-lib
+- `use_github_action` function and similar functions help [documentation](https://usethis.r-lib.org/reference/github_actions.html?q=#arguments) 
+- [Workflow syntax for GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)
 
 :tada: 
 Now you know that are GitHub actions, and where to find more information about those!
 
+---
+
 Note: the [r-lib/ghactions](https://github.com/r-lib/ghactions) repo is deprecated!
 
-Team members: test some github actions with R and secrets
+
+### Meet the team members
 
 * Chris
 * David Neuzerling
 * Murray
-* Paula
+* Paula A Martinez
 * Rhydwyn
 * Saras Windecker
