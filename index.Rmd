@@ -8,7 +8,7 @@ bibliography: [packages.bib]
 biblio-style: apalike
 link-citations: yes
 description: "An introduction to using github actions with R."
-rmd_files: ["index.Rmd", "package-ci.Rmd", "understanding_yaml.Rmd", "testing_with_renv.Rmd", "contributions.Rmd"]
+rmd_files: ["index.Rmd", "02-package_ci.Rmd", "03-understanding_yaml.Rmd", "04-testing_with_renv.Rmd", "05-contributions.Rmd"]
 ---
 
 
@@ -46,7 +46,7 @@ usethis::use_github_action_check_release()
 usethis::use_github_action_check_full()
 ```
 
-More details at in Chapter \@ref(packageci). 
+More details in Chapter \@ref(packageci). 
 
 There are a range of other R actions available in the [r-lib library](https://github.com/r-lib/actions/tree/master/examples). 
 You can add these example `yaml` files using the following function (demonstrated here with the check-release action):
@@ -60,11 +60,11 @@ usethis:::use_github_action('check-release.yaml')
 There are a huge selection of other actions that you can choose from in the [Marketplace](https://github.com/marketplace?type=actions) that automate not only GitHub processess but also programming-language-specific options.
 To implement these, go to any repo you _own_ and you will find "Actions" on the top menu. 
 Click on "New Workflow" and pick one from the templates provided.
-In some cases the `yaml` will need to be modified. More detail on understanding the `yaml` files can be found at \@ref(understanding_yaml). 
+In some cases the `yaml` will need to be modified. More detail on understanding the `yaml` files can be found in Chapter \@ref(understandingyaml). 
 
 ## Extensions
 
-We experimented with seting up continuous integration with a reproducible environment using `renv` \@ref(testing_with_renev).
+We experimented with seting up continuous integration with a reproducible environment using `renv`, which you can read about in Chapter \@ref(testingrenv).
 
 ## More information and useful links
 
