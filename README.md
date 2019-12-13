@@ -19,13 +19,13 @@ We describe both ways here.
 
 ### Meet the team members 
 
-* `r emo::ji("cat")` [Chris Brown](https://github.com/CStats) `r emo::ji("bird")`  [\@CStatsAU](https://twitter.com/CStatsAU)
-* `r emo::ji("cat")` [Murray Cadzow](https://github.com/murraycadzow) `r emo::ji("bird")`  [\@Rhydwyn McGuire](https://twitter.com/murraycadzow)
-* `r emo::ji("cat")` [Paula A Martinez](https://github.com/orchid00) `r emo::ji("bird")`  [\@orchid00](https://twitter.com/orchid00)
-* `r emo::ji("cat")` [Rhydwyn McGuire](https://github.com/rhydwyn) `r emo::ji("bird")`  [\@rhydwyn](https://twitter.com/rhydwyn)
-* `r emo::ji("cat")` [David Neuzerling](https://github.com/mdneuzerling) `r emo::ji("bird")`  [\@mdneuzerling](https://twitter.com/mdneuzerling)
-* `r emo::ji("cat")` [David Wilkinson](https://github.com/Doi90)
-* `r emo::ji("cat")` [Saras Windecker](https://github.com/smwindecker) `r emo::ji("bird")`  [\@smwindecker](https://twitter.com/smwindecker)
+* 🤓 [Chris Brown](https://github.com/CStats) 🐦 [\@CStatsAU](https://twitter.com/CStatsAU)
+* 🤓 [Murray Cadzow](https://github.com/murraycadzow) 🐦 [\@Rhydwyn McGuire](https://twitter.com/murraycadzow)
+* 🤓 [Paula A Martinez](https://github.com/orchid00) 🐦 [\@orchid00](https://twitter.com/orchid00)
+* 🤓 [Rhydwyn McGuire](https://github.com/rhydwyn) 🐦 [\@rhydwyn](https://twitter.com/rhydwyn)
+* 🤓 [David Neuzerling](https://github.com/mdneuzerling) 🐦 [\@mdneuzerling](https://twitter.com/mdneuzerling)
+* 🤓 [David Wilkinson](https://github.com/Doi90)
+* 🤓 [Saras Windecker](https://github.com/smwindecker) 🐦 [\@smwindecker](https://twitter.com/smwindecker)
 
 ![team](team.jpeg)
 
@@ -33,7 +33,6 @@ We describe both ways here.
 
 * Please [report any issues or bugs](https://github.com/ropenscilabs/CIsandbox/issues).
 * License: MIT
-* Get citation information for `conditionz` in R doing `citation(package = 'conditionz')`
 * Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 [![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
