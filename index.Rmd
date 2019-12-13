@@ -46,12 +46,12 @@ usethis::use_github_action_check_release()
 usethis::use_github_action_check_full()
 ```
 
-More details at \@ref(package-ci). 
+More details at in Chapter \@ref(packageci). 
 
 There are a range of other R actions available in the [r-lib library](https://github.com/r-lib/actions/tree/master/examples). 
 You can add these example `yaml` files using the following function (demonstrated here with the check-release action):
 
-```{r}
+```{r, eval = FALSE}
 usethis:::use_github_action('check-release.yaml')
 ```
 
