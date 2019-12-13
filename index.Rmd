@@ -8,7 +8,7 @@ bibliography: [packages.bib]
 biblio-style: apalike
 link-citations: yes
 description: "An introduction to using github actions with R."
-rmd_files: ["index.Rmd", "issue_messages.Rmd", "package-ci.Rmd", "testing_with_renv.Rmd"]
+rmd_files: ["index.Rmd", "issue_messages.Rmd", "package-ci.Rmd", "testing_with_renv.Rmd", "contributions.Rmd"]
 ---
 
 # Prerequisites
