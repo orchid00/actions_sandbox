@@ -56,5 +56,30 @@ This creates the required yaml file in `.github/workflows/` for using the GitHub
 
 Now git add, commit the changes and push them to your repo and the action will run! 
 
+## Automatically create pkgdown documentation
+
+Derived from: https://pkgdown.r-lib.org/reference/deploy_site_github.html
+
+First we need to create an empty gh-pages branch. In bash:
+
+```
+git checkout --orphan gh-pages
+git rm -rf .
+git commit --allow-empty -m 'Initial gh-pages commit'
+git push origin gh-pages
+git checkout master
+```
 
 
+
+Now we can add in pkgdown
+```{r}
+usethis::use_pkgdown()
+```
+
+Then we want to add in the github action for pkgdown to automatically add documentation
+```{r}
+usethis:::use_github_action(url = "https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml")
+```
+
+N.B. The usethis function is not currently exported into the NAMESPACE of `usethis` but is documented.
