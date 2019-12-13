@@ -1,4 +1,4 @@
-# Community contributions :tada:
+# Community contributions
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = FALSE, eval = FALSE)
