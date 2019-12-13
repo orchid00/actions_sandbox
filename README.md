@@ -51,11 +51,12 @@ Note: the [r-lib/ghactions](https://github.com/r-lib/ghactions) repo is deprecat
 
 ### Meet the team members
 
-* Chris
-* David Neuzerling
-* Murray
+* Chris Brown
+* Murray Cadzow
 * Paula A Martinez
-* Rhydwyn
+* Rhydwyn McGuire
+* David Neuzerling
+* David Wilkinson
 * Saras Windecker
 
 ![team](https://twitter.com/WeAreRLadies/status/1205083457329565698/photo/1)

@@ -1,6 +1,6 @@
 --- 
 title: "Github Actions with R"
-author: "Yihui Xie"
+author: "Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
