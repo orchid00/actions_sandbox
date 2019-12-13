@@ -1,4 +1,6 @@
+
 # So what's actually going on in the yaml file? {#understanding-yaml}
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
