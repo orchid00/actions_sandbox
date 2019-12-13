@@ -9,6 +9,52 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
 
+## Paula's code
+
+## So what's actually going on in the yaml file?
+
+See some more detail here. [https://github.com/ropenscilabs/CIsandbox/blob/master/github-actions-yaml-description.Rmd](https://github.com/ropenscilabs/CIsandbox/blob/master/github-actions-yaml-description.Rmd).
+
+
+You can find the `yaml` code for issue messages here:
+https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesmessage.yaml
+
+<details><summary>click me code</summary>
+  <p>
+
+
+        name: Triage
+        on:
+          issues:
+            types: [opened]
+        jobs:
+          commentOnNewIssues:
+            name: Comment On New Issues
+            runs-on: ubuntu-latest
+            steps:
+              - uses: actions/checkout@master
+              - name: Comment On New Issues
+                uses: actions/github@v1.0.0
+                env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                with:
+                  args: comment "Thanks for your issue! we are going to work on that"
+
+  </p>
+</details>
+
+Note: this and other examples are located on the Github actions repo: 
+[https://github.com/actions/github](https://github.com/actions/github)
+which serve as the actions-toolkit for common _GitHub automations_. ### Understanding parts of the yaml file
+
+The parts of the yaml file that were tricky to understand:
+
+`on` can be `issues`, `pull`, `pull_request` you can use one or many as `[pull, pull_request]`
+
+`uses`: `actions/checkout@master` or for the first `actions/first-interaction@v1`
+
+##
+
 ## The generated YAML file
 
 When we ran `usethis::use_github_actions` we generated a `R-CMD-check.yaml` file in the `.github/workflows` folder. YAML is a configuration file that's meant to be read by both humans and machines. In this case, the YAML file tells GitHub what we want the action to do. Let's dig into the contents of this file to see what's going on:
