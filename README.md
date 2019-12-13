@@ -5,13 +5,13 @@ The goal of CIsandbox is to test some github actions with R.
 
 ## What are GitHub actions?
 
-GitHub actions allow us to trigger automated steps after we GitHub interactions such as when we push, pull, submit a pull request, or write an issue. 
+GitHub actions allow us to trigger automated steps after we launch GitHub interactions such as when we push, pull, submit a pull request, or write an issue. 
 
 Some example actions that we can implement:
 
 - replace [Travis](travis.com) for continuous integration (CI)
 - trigger automated messages every time a new issue is written or a pull request is initiated
-- automated rendering of .md Readme files
+- check if you code works of different OS
 
 ## Quick start
 
@@ -19,9 +19,9 @@ GitHub actions follow the steps designated in a `yaml` file, which is located in
 
 ### The non-programatic way 
 
-Go to any repo you _own_ and you will find the "Actions" menu. 
-Click on "New Workflow" and pick one form the templates provided.
-You can modify the `yaml` to adapt your needs.
+Go to any repo you _own_ and you will find "Actions" on the top menu. 
+Click on "New Workflow" and pick one from the templates provided.
+You can modify the `yaml` to adapt the action, such as the message.
 
 ### The more programatic way
 
