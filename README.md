@@ -27,9 +27,12 @@ You can modify the `yaml` to adapt your needs.
 
 In `R` @jimhester is working to add github action functionalities to the development version of the [`usethis` package](https://usethis.r-lib.org/reference/github_actions.html), which is a grand start! A few actions have specific `usethis` functions associated with them, for example those associated with continuous integration. We step through these in the following RMarkdown file: 
 
-- set up [continuous integration](https://github.com/ropenscilabs/CIsandbox/blob/master/docs/package-ci.Rmd)
+- set up continuous integration [here](https://github.com/ropenscilabs/CIsandbox/blob/master/docs/package-ci.Rmd)
+- set up continuous integration with a reproducible environment using `renv` [here](https://github.com/ropenscilabs/CIsandbox/blob/master/docs/testing_with_renv.Rmd)
 
 You can also access other actions that not only automate GitHub processess but provide programming-language-specific options at the GitHub [Marketplace](https://github.com/marketplace?type=actions). We demonstrate using some of these in other actions in the following RMarkdown files:
+
+
 
 ## More information and useful links
 
