@@ -1,15 +1,8 @@
----
-title: "Testing with renv"
-author: "David Neuzerling"
-date: "12/12/2019"
-output: html_document
----
+# Testing with a reproducible environment
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = FALSE, eval = FALSE)
 ```
-
-# Testing with a reproducible environment
 
 We can take testing a step further by setting up an environment that mimics the one we used to train out model, and is set up the same way each time. First we need to set up a *lockfile* for our package that tells R exactly what packages --- including the versions --- should be used to reproduce this 
 

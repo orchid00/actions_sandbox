@@ -1,18 +1,9 @@
----
-title: "package-ci"
-author: "Murray Cadzow"
-date: "12/12/2019"
-output: 
- html_document:
-   toc: yes
----
+# Example workflow to set up continuous integration for packages
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(eval = FALSE)
 ```
-
-# Example workflow to set up continuous integration for packages
 
 This is an example workflow to create a package and use Github actions apply continuous integration to automatically check and test packages upon a git push.
 
@@ -41,16 +32,27 @@ Make sure that you have GitHub set up with your package.
 [Existing project and package, github first](https://happygitwithr.com/existing-github-first.html#existing-github-first)
 [Existing project and package, github last](https://happygitwithr.com/existing-github-last.html#existing-github-last)
 
-## Add github action for package release-check
+Before initiating GitHub actions, you'll need to point to where your GitHub instance is located. The following function populates the URL and BugReports fields of a GitHub-using R package DESCRIPTION file with links to GitHub. If your project is hosted by an enterprise GitHub server you'll need to modify the input arguments. 
 
 ```{r}
 usethis::use_github_links()
+```
+
+## Actions for continuous integration checks
+
+### release-check
+
+This option checks your work using 
+```{r}
 usethis::use_github_actions()
 ```
 
 This creates the required yaml file in `.github/workflows/` for using the GitHub action that runs the release-check for a package on gitGitHubhub and includes the code to add the badge in your readme.
 
 Now git add, commit the changes and push them to your repo and the action will run! 
+
+## secrets
+copy the token. go to settings, secrets, add new secret. 
 
 ## So what's actually going on in the yaml file?
 

@@ -1,9 +1,4 @@
----
-title: "Issue messages"
-author: "David Neuzerling"
-date: "12/12/2019"
-output: html_document
----
+# Adding messages to issues and pull requests
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
