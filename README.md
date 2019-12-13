@@ -59,4 +59,3 @@ Note: the [r-lib/ghactions](https://github.com/r-lib/ghactions) repo is deprecat
 * David Wilkinson
 * Saras Windecker
 
-![team](https://twitter.com/WeAreRLadies/status/1205083457329565698/photo/1)
