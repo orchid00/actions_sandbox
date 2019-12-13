@@ -134,8 +134,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-are-github-actions"><i class="fa fa-check"></i><b>1.1</b> What are GitHub actions?</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#usethis-wrappers"><i class="fa fa-check"></i><b>1.1.1</b> usethis wrappers</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-are-github-actions"><i class="fa fa-check"></i><b>1.1</b> What are GitHub Actions?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#usethis-wrappers"><i class="fa fa-check"></i><b>1.1.1</b> Usethis Wrappers</a></li>
 <li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#marketplace-actions"><i class="fa fa-check"></i><b>1.1.2</b> Marketplace Actions</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#extensions"><i class="fa fa-check"></i><b>1.2</b> Extensions</a></li>
@@ -144,17 +144,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="packageci.html"><a href="packageci.html"><i class="fa fa-check"></i><b>2</b> Example workflow to set up continuous integration for packages</a><ul>
 <li class="chapter" data-level="2.1" data-path="packageci.html"><a href="packageci.html#package-setup-and-connect-with-github"><i class="fa fa-check"></i><b>2.1</b> Package setup and connect with Github</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="packageci.html"><a href="packageci.html#new-project-github-first"><i class="fa fa-check"></i><b>2.1.1</b> New project, Github first</a></li>
-<li class="chapter" data-level="2.1.2" data-path="packageci.html"><a href="packageci.html#existing-package-with-github"><i class="fa fa-check"></i><b>2.1.2</b> Existing package with github</a></li>
+<li class="chapter" data-level="2.1.2" data-path="packageci.html"><a href="packageci.html#existing-package-with-github"><i class="fa fa-check"></i><b>2.1.2</b> Existing package with Github</a></li>
+<li class="chapter" data-level="2.1.3" data-path="packageci.html"><a href="packageci.html#add-github-links-to-description"><i class="fa fa-check"></i><b>2.1.3</b> Add Github links to DESCRIPTION</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="packageci.html"><a href="packageci.html#actions-for-continuous-integration-checks"><i class="fa fa-check"></i><b>2.2</b> Actions for continuous integration checks</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="packageci.html"><a href="packageci.html#release-check"><i class="fa fa-check"></i><b>2.2.1</b> release-check</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="understandingyaml.html"><a href="understandingyaml.html"><i class="fa fa-check"></i><b>3</b> So what’s actually going on in the yaml file?</a><ul>
-<li class="chapter" data-level="3.1" data-path="understandingyaml.html"><a href="understandingyaml.html#r-syntax-options"><i class="fa fa-check"></i><b>3.1</b> R Syntax options</a></li>
+<li class="chapter" data-level="3" data-path="understanding-yaml.html"><a href="understanding-yaml.html"><i class="fa fa-check"></i><b>3</b> So what’s actually going on in the yaml file?</a><ul>
+<li class="chapter" data-level="3.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#r-syntax-options"><i class="fa fa-check"></i><b>3.1</b> R Syntax options</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="testingrenv.html"><a href="testingrenv.html"><i class="fa fa-check"></i><b>4</b> Testing with a reproducible environment</a></li>
-<li class="chapter" data-level="5" data-path="contributions.html"><a href="contributions.html"><i class="fa fa-check"></i><b>5</b> Community contributions :tada:</a></li>
+<li class="chapter" data-level="4" data-path="testing-with-renev.html"><a href="testing-with-renev.html"><i class="fa fa-check"></i><b>4</b> Testing with a reproducible environment</a></li>
+<li class="chapter" data-level="5" data-path="contributions.html"><a href="contributions.html"><i class="fa fa-check"></i><b>5</b> Community contributions</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -183,19 +184,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
 <div id="what-are-github-actions" class="section level2">
-<h2><span class="header-section-number">1.1</span> What are GitHub actions?</h2>
-<p>GitHub actions allow us to trigger automated steps after we launch GitHub interactions such as when we push, pull, submit a pull request, or write an issue.</p>
+<h2><span class="header-section-number">1.1</span> What are GitHub Actions?</h2>
+<p><a href="https://github.com/features/actions">GitHub actions</a> allow us to trigger automated steps after we launch GitHub interactions such as when we push, pull, submit a pull request, or write an issue.</p>
 <p>For example, there are actions that will automatically trigger:</p>
 <ul>
 <li>continuous integration (CI)</li>
 <li>messages in response to issues or pull requests</li>
-<li>rendering/compiling eg. of bookdown, blogdowns etc</li>
+<li>rendering/compiling e.g. of rmarkdown, bookdown, blogdowns etc</li>
 </ul>
 <p>GitHub actions follow the steps designated in a <code>yaml</code> file, which we place in the <code>.github/workflows</code> folder of the repo.
 We can add these <code>yaml</code> files to our repo either by clicking on a series of steps on GitHub.com, or using wrapper functions provided by the <code>usethis</code> package, depending on which actions you which to include.
 We describe both ways here.</p>
 <div id="usethis-wrappers" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> usethis wrappers</h3>
+<h3><span class="header-section-number">1.1.1</span> Usethis Wrappers</h3>
 <p><a href="https://github.com/jimhester">Jim Hester</a> is working to add GitHub action functionalities to the development version of the <a href="https://usethis.r-lib.org/reference/github_actions.html"><code>usethis</code> package</a>.
 To use these functions now, you’ll need to install the development version, as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
@@ -203,22 +204,22 @@ To use these functions now, you’ll need to install the development version, as
 <p>Two specific GitHub actions related to continuous integration can be implemented with either of the following:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action_check_release</span>()</span>
 <span id="cb2-2"><a href="index.html#cb2-2"></a>usethis<span class="op">::</span><span class="kw">use_github_action_check_full</span>()</span></code></pre></div>
-<p>More details in Chapter <a href="packageci.html#packageci">2</a>.</p>
+<p>More details are in chapter <a href="packageci.html#packageci">2</a>.</p>
 <p>There are a range of other R actions available in the <a href="https://github.com/r-lib/actions/tree/master/examples">r-lib library</a>.
 You can add these example <code>yaml</code> files using the following function (demonstrated here with the check-release action):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1"></a>usethis<span class="op">:::</span><span class="kw">use_github_action</span>(<span class="st">&#39;check-release.yaml&#39;</span>)</span></code></pre></div>
 </div>
 <div id="marketplace-actions" class="section level3">
 <h3><span class="header-section-number">1.1.2</span> Marketplace Actions</h3>
-<p>There are a huge selection of other actions that you can choose from in the <a href="https://github.com/marketplace?type=actions">Marketplace</a> that automate not only GitHub processess but also programming-language-specific options.
+<p>There are a huge selection of other actions that you can choose from in the <a href="https://github.com/marketplace?type=actions">Marketplace</a> that automate not only GitHub processes but also programming-language-specific options.
 To implement these, go to any repo you <em>own</em> and you will find “Actions” on the top menu.
-Click on “New Workflow” and pick one from the templates provided.
-In some cases the <code>yaml</code> will need to be modified. More detail on understanding the <code>yaml</code> files can be found in Chapter <a href="understandingyaml.html#understandingyaml">3</a>.</p>
+Click on “New Workflow” and pick one from the templates provided.</p>
+<p>In some cases the <code>yaml</code> will need to be modified. More detail on understanding the <code>yaml</code> files can be found in chapter <a href="understanding-yaml.html#understanding-yaml">3</a>.</p>
 </div>
 </div>
 <div id="extensions" class="section level2">
 <h2><span class="header-section-number">1.2</span> Extensions</h2>
-<p>We experimented with seting up continuous integration with a reproducible environment using <code>renv</code>, which you can read about in Chapter <a href="testingrenv.html#testingrenv">4</a>.</p>
+<p>We experimented with setting up continuous integration with a reproducible environment using <code>renv</code> in chapter <a href="testing-with-renev.html#testing-with-renev">4</a>.</p>
 </div>
 <div id="more-information-and-useful-links" class="section level2">
 <h2><span class="header-section-number">1.3</span> More information and useful links</h2>
@@ -291,20 +292,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

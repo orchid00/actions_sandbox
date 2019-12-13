@@ -1,6 +1,6 @@
 
+# So what's actually going on in the yaml file? {#understanding-yaml}
 
-# So what's actually going on in the yaml file? {#understandingyaml}
 
 
 
@@ -40,8 +40,9 @@ A few examples:
 
 ## R Syntax options
 
-Change the <customise bits>
+Change the \<customise bits>
 
+```
 on:
   push:
 
@@ -63,6 +64,7 @@ jobs:
         run: |
           git commit <some file>.md -m 'Re-build <file>.Rmd' || echo "No changes to commit"
           git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
+```
 
 * The `on` parameter tells GitHub what should trigger this action. In this case, we want to check code whenever it is pushed, or on a pull request. The latter is particularly useful because if we're about to merge code into the master branch, we want it to pass tests!
 * The `name` of the action should be something that helps us identify at a glance what the action is doing. This is shown on github.com in the Actions tab of the repository.

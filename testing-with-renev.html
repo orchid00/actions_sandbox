@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="understandingyaml.html"/>
+<link rel="prev" href="understanding-yaml.html"/>
 <link rel="next" href="contributions.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -134,8 +134,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-are-github-actions"><i class="fa fa-check"></i><b>1.1</b> What are GitHub actions?</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#usethis-wrappers"><i class="fa fa-check"></i><b>1.1.1</b> usethis wrappers</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-are-github-actions"><i class="fa fa-check"></i><b>1.1</b> What are GitHub Actions?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#usethis-wrappers"><i class="fa fa-check"></i><b>1.1.1</b> Usethis Wrappers</a></li>
 <li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#marketplace-actions"><i class="fa fa-check"></i><b>1.1.2</b> Marketplace Actions</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#extensions"><i class="fa fa-check"></i><b>1.2</b> Extensions</a></li>
@@ -144,17 +144,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="packageci.html"><a href="packageci.html"><i class="fa fa-check"></i><b>2</b> Example workflow to set up continuous integration for packages</a><ul>
 <li class="chapter" data-level="2.1" data-path="packageci.html"><a href="packageci.html#package-setup-and-connect-with-github"><i class="fa fa-check"></i><b>2.1</b> Package setup and connect with Github</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="packageci.html"><a href="packageci.html#new-project-github-first"><i class="fa fa-check"></i><b>2.1.1</b> New project, Github first</a></li>
-<li class="chapter" data-level="2.1.2" data-path="packageci.html"><a href="packageci.html#existing-package-with-github"><i class="fa fa-check"></i><b>2.1.2</b> Existing package with github</a></li>
+<li class="chapter" data-level="2.1.2" data-path="packageci.html"><a href="packageci.html#existing-package-with-github"><i class="fa fa-check"></i><b>2.1.2</b> Existing package with Github</a></li>
+<li class="chapter" data-level="2.1.3" data-path="packageci.html"><a href="packageci.html#add-github-links-to-description"><i class="fa fa-check"></i><b>2.1.3</b> Add Github links to DESCRIPTION</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="packageci.html"><a href="packageci.html#actions-for-continuous-integration-checks"><i class="fa fa-check"></i><b>2.2</b> Actions for continuous integration checks</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="packageci.html"><a href="packageci.html#release-check"><i class="fa fa-check"></i><b>2.2.1</b> release-check</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="understandingyaml.html"><a href="understandingyaml.html"><i class="fa fa-check"></i><b>3</b> So what’s actually going on in the yaml file?</a><ul>
-<li class="chapter" data-level="3.1" data-path="understandingyaml.html"><a href="understandingyaml.html#r-syntax-options"><i class="fa fa-check"></i><b>3.1</b> R Syntax options</a></li>
+<li class="chapter" data-level="3" data-path="understanding-yaml.html"><a href="understanding-yaml.html"><i class="fa fa-check"></i><b>3</b> So what’s actually going on in the yaml file?</a><ul>
+<li class="chapter" data-level="3.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#r-syntax-options"><i class="fa fa-check"></i><b>3.1</b> R Syntax options</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="testingrenv.html"><a href="testingrenv.html"><i class="fa fa-check"></i><b>4</b> Testing with a reproducible environment</a></li>
-<li class="chapter" data-level="5" data-path="contributions.html"><a href="contributions.html"><i class="fa fa-check"></i><b>5</b> Community contributions :tada:</a></li>
+<li class="chapter" data-level="4" data-path="testing-with-renev.html"><a href="testing-with-renev.html"><i class="fa fa-check"></i><b>4</b> Testing with a reproducible environment</a></li>
+<li class="chapter" data-level="5" data-path="contributions.html"><a href="contributions.html"><i class="fa fa-check"></i><b>5</b> Community contributions</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -175,13 +176,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="testingrenv" class="section level1">
+<div id="testing-with-renev" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Testing with a reproducible environment</h1>
 <p>We can take testing a step further by setting up an environment that mimics the one we used to train out model, and is set up the same way each time. First we need to set up a <em>lockfile</em> for our package that tells R exactly what packages — including the versions — should be used to reproduce this</p>
 <p>We’ll be using the <code>renv</code> package, but a word of warning first: this package is still under active development, so this information may quickly become outdated.</p>
 <p>Once you’ve installed <code>renv</code>, open the R project containing your package and run <code>renv::snapshot()</code>. There will be a prompt for your consent to alter some files in your project and system. This function will automatically determine the dependencies used in your package, as well as what packages (and versions) are installed on your system, and will record this information in a lock file.</p>
 <p>When you open your project in the future, RStudio will automatically load the packages that are recorded in the snapshot, down to the version number. If the specific versions aren’t available, it will download them and install them from source, or using available binaries. Try restarting your R environment to see this happen. We can trigger this behaviour manually with <code>renv::restore()</code>. To learn more about the <code>renv</code> package, <a href="https://rstudio.github.io/renv/articles/renv.html">read the introductory article</a>.</p>
-<p>Now we need to configure GitHub actions to use the snapshot we’ve just set up. In the previous action, we used macOS so that we could take advantage of available package binaries for quick installation. I’m going to be using Ubuntu for this to replicate my person Linux environment, and this means that packageres will be installed from source.</p>
+<p>Now we need to configure GitHub actions to use the snapshot we’ve just set up. In the previous action, we used macOS so that we could take advantage of available package binaries for quick installation. I’m going to be using Ubuntu for this to replicate my person Linux environment, and this means that packages will be installed from source.</p>
 <p>Here’s the workflow that I’m using. Read through it and see if you can work out what’s going on, and then we’ll go through the finer details:</p>
 <pre><code>on: [push, pull_request]
 
@@ -255,7 +256,7 @@ jobs:
           </div>
         </div>
       </div>
-<a href="understandingyaml.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="understanding-yaml.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="contributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -306,20 +307,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

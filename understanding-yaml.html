@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="packageci.html"/>
-<link rel="next" href="testingrenv.html"/>
+<link rel="next" href="testing-with-renev.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -134,8 +134,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-are-github-actions"><i class="fa fa-check"></i><b>1.1</b> What are GitHub actions?</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#usethis-wrappers"><i class="fa fa-check"></i><b>1.1.1</b> usethis wrappers</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-are-github-actions"><i class="fa fa-check"></i><b>1.1</b> What are GitHub Actions?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#usethis-wrappers"><i class="fa fa-check"></i><b>1.1.1</b> Usethis Wrappers</a></li>
 <li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#marketplace-actions"><i class="fa fa-check"></i><b>1.1.2</b> Marketplace Actions</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#extensions"><i class="fa fa-check"></i><b>1.2</b> Extensions</a></li>
@@ -144,17 +144,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="packageci.html"><a href="packageci.html"><i class="fa fa-check"></i><b>2</b> Example workflow to set up continuous integration for packages</a><ul>
 <li class="chapter" data-level="2.1" data-path="packageci.html"><a href="packageci.html#package-setup-and-connect-with-github"><i class="fa fa-check"></i><b>2.1</b> Package setup and connect with Github</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="packageci.html"><a href="packageci.html#new-project-github-first"><i class="fa fa-check"></i><b>2.1.1</b> New project, Github first</a></li>
-<li class="chapter" data-level="2.1.2" data-path="packageci.html"><a href="packageci.html#existing-package-with-github"><i class="fa fa-check"></i><b>2.1.2</b> Existing package with github</a></li>
+<li class="chapter" data-level="2.1.2" data-path="packageci.html"><a href="packageci.html#existing-package-with-github"><i class="fa fa-check"></i><b>2.1.2</b> Existing package with Github</a></li>
+<li class="chapter" data-level="2.1.3" data-path="packageci.html"><a href="packageci.html#add-github-links-to-description"><i class="fa fa-check"></i><b>2.1.3</b> Add Github links to DESCRIPTION</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="packageci.html"><a href="packageci.html#actions-for-continuous-integration-checks"><i class="fa fa-check"></i><b>2.2</b> Actions for continuous integration checks</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="packageci.html"><a href="packageci.html#release-check"><i class="fa fa-check"></i><b>2.2.1</b> release-check</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="understandingyaml.html"><a href="understandingyaml.html"><i class="fa fa-check"></i><b>3</b> So what’s actually going on in the yaml file?</a><ul>
-<li class="chapter" data-level="3.1" data-path="understandingyaml.html"><a href="understandingyaml.html#r-syntax-options"><i class="fa fa-check"></i><b>3.1</b> R Syntax options</a></li>
+<li class="chapter" data-level="3" data-path="understanding-yaml.html"><a href="understanding-yaml.html"><i class="fa fa-check"></i><b>3</b> So what’s actually going on in the yaml file?</a><ul>
+<li class="chapter" data-level="3.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#r-syntax-options"><i class="fa fa-check"></i><b>3.1</b> R Syntax options</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="testingrenv.html"><a href="testingrenv.html"><i class="fa fa-check"></i><b>4</b> Testing with a reproducible environment</a></li>
-<li class="chapter" data-level="5" data-path="contributions.html"><a href="contributions.html"><i class="fa fa-check"></i><b>5</b> Community contributions :tada:</a></li>
+<li class="chapter" data-level="4" data-path="testing-with-renev.html"><a href="testing-with-renev.html"><i class="fa fa-check"></i><b>4</b> Testing with a reproducible environment</a></li>
+<li class="chapter" data-level="5" data-path="contributions.html"><a href="contributions.html"><i class="fa fa-check"></i><b>5</b> Community contributions</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -175,7 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="understandingyaml" class="section level1">
+<div id="understanding-yaml" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> So what’s actually going on in the yaml file?</h1>
 <p>Note: you can use <code>.yml</code> or <code>.yaml</code> as extension of your file for your workflow.</p>
 <p>Let’s explore the <code>yaml</code> code for the first issue message here:</p>
@@ -206,26 +207,28 @@ with the name greeting, and will run on a <a href="https://help.github.com/en/ac
 `uses`: `actions/checkout@master` or for the first `actions/first-interaction@v1`</code></pre>
 <div id="r-syntax-options" class="section level2">
 <h2><span class="header-section-number">3.1</span> R Syntax options</h2>
-<p>Change the <customise bits></p>
-<p>on:
-push:</p>
-<p>name: <nameyouraction></p>
-<p>jobs:
-render:
-name: <nameyourjob>
-runs-on: macOS-latest
-steps:
-- uses: <a href="mailto:actions/checkout@v1" class="email">actions/checkout@v1</a>
-- uses: <a href="mailto:r-lib/actions/setup-r@v1" class="email">r-lib/actions/setup-r@v1</a>
-- uses: <a href="mailto:r-lib/actions/setup-pandoc@v1" class="email">r-lib/actions/setup-pandoc@v1</a>
-- name: <namestep1>
-run: Rscript -e ‘install.packages(“<the package you need>”)’
-- name: <namestep2>
-run: Rscript -e ‘rmarkdown::render(“examples/README.Rmd”)’
-- name: <namestep3>
-run: |
-git commit <some file>.md -m ‘Re-build <file>.Rmd’ || echo “No changes to commit”
-git push <a href="https://$" class="uri">https://$</a>{{github.actor}}:<span class="math inline">\({{secrets.GITHUB_TOKEN}}@github.com/\)</span>{{github.repository}}.git HEAD:${{ github.ref }} || echo “No changes to commit”</p>
+<p>Change the &lt;customise bits&gt;</p>
+<pre><code>on:
+  push:
+
+name: &lt;nameyouraction&gt;
+
+jobs:
+  render:
+    name: &lt;nameyourjob&gt;
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: &lt;namestep1&gt;
+        run: Rscript -e &#39;install.packages(&quot;&lt;the package you need&gt;&quot;)&#39;
+      - name: &lt;namestep2&gt;
+        run: Rscript -e &#39;rmarkdown::render(&quot;examples/README.Rmd&quot;)&#39;
+      - name: &lt;namestep3&gt;
+        run: |
+          git commit &lt;some file&gt;.md -m &#39;Re-build &lt;file&gt;.Rmd&#39; || echo &quot;No changes to commit&quot;
+          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo &quot;No changes to commit&quot;</code></pre>
 <ul>
 <li>The <code>on</code> parameter tells GitHub what should trigger this action. In this case, we want to check code whenever it is pushed, or on a pull request. The latter is particularly useful because if we’re about to merge code into the master branch, we want it to pass tests!</li>
 <li>The <code>name</code> of the action should be something that helps us identify at a glance what the action is doing. This is shown on github.com in the Actions tab of the repository.</li>
@@ -242,7 +245,7 @@ git push <a href="https://$" class="uri">https://$</a>{{github.actor}}:<span cla
         </div>
       </div>
 <a href="packageci.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="testingrenv.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="testing-with-renev.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -292,20 +295,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
