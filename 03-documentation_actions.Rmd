@@ -1,0 +1,39 @@
+# Websites using pkgdown, bookdown, and blogdown
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+In order to serve html pages through GitHub pages the following needs to be done to create an emtpy gh-pages branch to be used to deploy the html pages created by either `pkgdown`, `bookdown`, or `blogdown`
+
+Derived from: https://pkgdown.r-lib.org/reference/deploy_site_github.html
+
+First we need to create an empty gh-pages branch. In bash:
+  
+  ```
+git checkout --orphan gh-pages
+git rm -rf .
+git commit --allow-empty -m 'Initial gh-pages commit'
+git push origin gh-pages
+git checkout master
+```
+
+## Action to deploy a pkgdown site
+
+Now we can add in pkgdown
+
+```{r}
+usethis::use_pkgdown()
+```
+
+Then we want to add in the github action for pkgdown to automatically add documentation
+```{r}
+usethis:::use_github_action(url = "https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml")
+```
+
+N.B. The usethis function is not currently exported into the NAMESPACE of `usethis` but is documented.
+
+## Action to deploy a bookdown site
+
+## Action to deploy blogdown site
