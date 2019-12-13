@@ -19,7 +19,7 @@ We describe both ways here.
 
 ### Meet the team members 
 
-* `r emo::ji("cat")` [Chris Brown](https://github.com/CStats) `r emo::ji("bird")`  [\@CStatsAU](https://twitter.com/CStatsAU)
+* `r emo::ji("cat")` [Chris Brown](https://github.com/CStats) `r emo::ji("bird")` [\@CStatsAU](https://twitter.com/CStatsAU)
 * `r emo::ji("cat")` [Murray Cadzow](https://github.com/murraycadzow) `r emo::ji("bird")`  [\@Rhydwyn McGuire](https://twitter.com/murraycadzow)
 * `r emo::ji("cat")` [Paula A Martinez](https://github.com/orchid00) `r emo::ji("bird")`  [\@orchid00](https://twitter.com/orchid00)
 * `r emo::ji("cat")` [Rhydwyn McGuire](https://github.com/rhydwyn) `r emo::ji("bird")`  [\@rhydwyn](https://twitter.com/rhydwyn)
@@ -33,7 +33,6 @@ We describe both ways here.
 
 * Please [report any issues or bugs](https://github.com/ropenscilabs/CIsandbox/issues).
 * License: MIT
-* Get citation information for `conditionz` in R doing `citation(package = 'conditionz')`
 * Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 [![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
