@@ -8,9 +8,10 @@ bibliography: [packages.bib]
 biblio-style: apalike
 link-citations: yes
 description: "An introduction to using github actions with R."
-<<<<<<< HEAD
 rmd_files: ["index.Rmd", "package-ci.Rmd", "understanding_yaml.Rmd", "testing_with_renv.Rmd", "contributions.Rmd"]
 ---
+
+
 
 # Introduction
 
@@ -33,14 +34,14 @@ We describe both ways here.
 [Jim Hester](https://github.com/jimhester) is working to add GitHub action functionalities to the development version of the [`usethis` package](https://usethis.r-lib.org/reference/github_actions.html).
 To use these functions now, you'll need to install the development version, as follows:
 
-```{r}
+```{r, eval= FALSE}
 # install.packages("devtools")
 devtools::install_github("r-lib/usethis")
 ```
 
 Two specific GitHub actions related to continuous integration can be implemented with either of the following: 
 
-```{r}
+```{r, eval = FALSE}
 usethis::use_github_action_check_release()
 usethis::use_github_action_check_full()
 ```
