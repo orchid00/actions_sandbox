@@ -1,0 +1,45 @@
+---
+title: "Issue messages"
+author: "David Neuzerling"
+date: "12/12/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+## So what's actually going on in the yaml file?
+
+You can find the `yaml` code for issue messages here:
+https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/issuesmessage.yaml
+
+<details><summary>click me code</summary>
+  <p>
+
+
+        name: Triage
+        on:
+          issues:
+            types: [opened]
+        jobs:
+          commentOnNewIssues:
+            name: Comment On New Issues
+            runs-on: ubuntu-latest
+            steps:
+              - uses: actions/checkout@master
+              - name: Comment On New Issues
+                uses: actions/github@v1.0.0
+                env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                with:
+                  args: comment "Thanks for your issue! we are going to work on that"
+
+  </p>
+</details>
+
+The parts of the yaml file that were tricky to understand:
+
+`on` can be `issues`, `pull`, `pull_request` you can use one or many as `[pull, pull_request]`
+
+`uses`: `actions/checkout@master` or for the first `actions/first-interaction@v1`
