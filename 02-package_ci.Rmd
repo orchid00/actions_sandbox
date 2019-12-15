@@ -30,13 +30,15 @@ You can do so, for example, with the following command:
 usethis::create_package(path = "path_to_project")
 ```
 
-### Existing package with GitHub
+### Existing package with Github
 
-If you already have a package you can instead follow either of these instructions to set it up with GitHub,: 
-[Existing project and package, GitHub first](https://happygitwithr.com/existing-GitHub-first.html#existing-GitHub-first) or 
-[Existing project and package, GitHub last](https://happygitwithr.com/existing-GitHub-last.html#existing-GitHub-last). 
+Make sure that you have Git Hub set up with your package. Refer to https://happygitwithr.com/ for setting up with an existing project.
 
-## Specify GitHub links
+- [Existing project and package, github first](https://happygitwithr.com/existing-github-first.html#existing-github-first)
+
+- [Existing project and package, github last](https://happygitwithr.com/existing-github-last.html#existing-github-last)
+
+### Add Github links to DESCRIPTION
 
 You'll need to point your package to where your GitHub instance is located. 
 The following function populates the URL and BugReports fields of a GitHub-using R package DESCRIPTION file with links to GitHub. 
