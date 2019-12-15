@@ -24,7 +24,7 @@
 <meta name="author" content="Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker" />
 
 
-<meta name="date" content="2019-12-13" />
+<meta name="date" content="2019-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,14 +142,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#more-information-and-useful-links"><i class="fa fa-check"></i><b>1.3</b> More information and useful links</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="packageci.html"><a href="packageci.html"><i class="fa fa-check"></i><b>2</b> Example workflow to set up continuous integration for packages</a><ul>
-<li class="chapter" data-level="2.1" data-path="packageci.html"><a href="packageci.html#package-setup-and-connect-with-github"><i class="fa fa-check"></i><b>2.1</b> Package setup and connect with Github</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="packageci.html"><a href="packageci.html#new-project-github-first"><i class="fa fa-check"></i><b>2.1.1</b> New project, Github first</a></li>
+<li class="chapter" data-level="2.1" data-path="packageci.html"><a href="packageci.html#set-up-package"><i class="fa fa-check"></i><b>2.1</b> Set up package</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="packageci.html"><a href="packageci.html#new-project-github-first"><i class="fa fa-check"></i><b>2.1.1</b> New project, GitHub first</a></li>
 <li class="chapter" data-level="2.1.2" data-path="packageci.html"><a href="packageci.html#existing-package-with-github"><i class="fa fa-check"></i><b>2.1.2</b> Existing package with Github</a></li>
 <li class="chapter" data-level="2.1.3" data-path="packageci.html"><a href="packageci.html#add-github-links-to-description"><i class="fa fa-check"></i><b>2.1.3</b> Add Github links to DESCRIPTION</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="packageci.html"><a href="packageci.html#actions-for-continuous-integration-checks"><i class="fa fa-check"></i><b>2.2</b> Actions for continuous integration checks</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="packageci.html"><a href="packageci.html#release-check"><i class="fa fa-check"></i><b>2.2.1</b> release-check</a></li>
+<li class="chapter" data-level="2.2.1" data-path="packageci.html"><a href="packageci.html#ci-release-check"><i class="fa fa-check"></i><b>2.2.1</b> CI release check</a></li>
+<li class="chapter" data-level="2.2.2" data-path="packageci.html"><a href="packageci.html#ci-full-check"><i class="fa fa-check"></i><b>2.2.2</b> CI full check</a></li>
 </ul></li>
+<li class="chapter" data-level="2.3" data-path="packageci.html"><a href="packageci.html#adding-secrets"><i class="fa fa-check"></i><b>2.3</b> Adding secrets</a></li>
+<li class="chapter" data-level="2.4" data-path="packageci.html"><a href="packageci.html#what-next"><i class="fa fa-check"></i><b>2.4</b> What next?</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="understanding-yaml.html"><a href="understanding-yaml.html"><i class="fa fa-check"></i><b>3</b> So what’s actually going on in the yaml file?</a><ul>
 <li class="chapter" data-level="3.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#r-syntax-options"><i class="fa fa-check"></i><b>3.1</b> R Syntax options</a></li>
@@ -178,17 +181,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="packageci" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Example workflow to set up continuous integration for packages</h1>
-<p>This is an example workflow to create a package and use Github actions apply continuous integration to automatically check and test packages upon a git push.</p>
-<p>Github actions are included in the dev version of <code>usethis</code> which can be installed from Github using</p>
+<p>This is an example workflow to create a package and use GitHub actions to apply continuous integration (CI).
+CI automatically checks and tests packages upon a <code>git push</code>.</p>
+<p>Wrappers to implement some GitHub actions are included in the development version of <code>usethis</code>, which can be installed from GitHub using:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="packageci.html#cb4-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
 <span id="cb4-2"><a href="packageci.html#cb4-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;r-lib/usethis&quot;</span>)</span></code></pre></div>
-<div id="package-setup-and-connect-with-github" class="section level2">
-<h2><span class="header-section-number">2.1</span> Package setup and connect with Github</h2>
+<div id="set-up-package" class="section level2">
+<h2><span class="header-section-number">2.1</span> Set up package</h2>
 <div id="new-project-github-first" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> New project, Github first</h3>
-<p>Follow instructions for setting up a new project with <a href="https://happygitwithr.com/new-github-first.html#new-github-first">happygitwithr</a></p>
-<p>Create a package</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="packageci.html#cb5-1"></a>usethis<span class="op">::</span><span class="kw">create_package</span>(<span class="dt">path =</span> <span class="st">&quot;path-to-project&quot;</span>)</span></code></pre></div>
+<h3><span class="header-section-number">2.1.1</span> New project, GitHub first</h3>
+<p>The CI GitHub actions require a package that is set up with git and GitHub.
+There are some useful instructions for setting up a new project in the <a href="https://happygitwithr.com/new-GitHub-first.html#new-GitHub-first">happygitwithr book</a>.
+After setting up the repo in this way, you’ll need to add the infrastructure to turn the project into a package.
+You can do so, for example, with the following command:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="packageci.html#cb5-1"></a>usethis<span class="op">::</span><span class="kw">create_package</span>(<span class="dt">path =</span> <span class="st">&quot;path_to_project&quot;</span>)</span></code></pre></div>
 </div>
 <div id="existing-package-with-github" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Existing package with Github</h3>
@@ -200,20 +206,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="add-github-links-to-description" class="section level3">
 <h3><span class="header-section-number">2.1.3</span> Add Github links to DESCRIPTION</h3>
-<p>Before initiating GitHub actions, you’ll need to point to where your GitHub instance is located. The following function populates the URL and BugReports fields of a GitHub-using R package DESCRIPTION file with links to GitHub. If your project is hosted by an enterprise GitHub server you’ll need to modify the input arguments.</p>
+<p>You’ll need to point your package to where your GitHub instance is located.
+The following function populates the URL and BugReports fields of a GitHub-using R package DESCRIPTION file with links to GitHub.
+If your project is hosted by an enterprise GitHub server this is where you can specify that in the input arguments.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="packageci.html#cb6-1"></a>usethis<span class="op">::</span><span class="kw">use_github_links</span>()</span></code></pre></div>
+<p>If a new GitHub Personal Access Token (PAT) needs to be generated, <code>usethis</code> will print some instructions to the console for you to follow.</p>
 </div>
 </div>
 <div id="actions-for-continuous-integration-checks" class="section level2">
 <h2><span class="header-section-number">2.2</span> Actions for continuous integration checks</h2>
-<div id="release-check" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> release-check</h3>
-<p>This option checks your work using</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="packageci.html#cb7-1"></a>usethis<span class="op">::</span><span class="kw">use_github_actions</span>()</span></code></pre></div>
-<p>This creates the required yaml file in <code>.github/workflows/</code> for using the GitHub action that runs the release-check for a package on GitHub and includes the code to add the badge in your README.</p>
-<p>Now git add, commit the changes and push them to your repo and the action will run!</p>
-
+<p>Both of the following functions create a yaml file in <code>.github/workflows/</code> that will trigger a CI check using GitHub actions.
+They also print the code to copy into your readme to add a badge for CI.</p>
+<div id="ci-release-check" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> CI release check</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="packageci.html#cb7-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action_check_release</span>()</span></code></pre></div>
+<p>This option is the more simplified check. It only specifies checking on Mac-OSX and on the most recent version of R.
+If you are happy with these settings, no alterations to the automatically generated yaml are needed.</p>
 </div>
+<div id="ci-full-check" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> CI full check</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="packageci.html#cb8-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action_check_full</span>()</span></code></pre></div>
+<p>This option sets up a more comprehensive CI check.
+It tests the package on Linux, Windows, as well as Mac-OSX operating systems.
+It also queries dependencies, caches previous installations of them, and evaluates test coverage using codecov.
+To make the file work as is, a token for codecov must be added to your secrets page.
+We explain how to this below!
+If you are not interested in syncing your package to codecov, this part is not necessary.</p>
+</div>
+</div>
+<div id="adding-secrets" class="section level2">
+<h2><span class="header-section-number">2.3</span> Adding secrets</h2>
+<p>Now git add, commit the changes and push them to your repo and the action will run!</p>
+</div>
+<div id="what-next" class="section level2">
+<h2><span class="header-section-number">2.4</span> What next?</h2>
+<p>Read on to Chapter @ref{#understandingyaml} to get an introduction to the contents of the yaml files.</p>
+
 </div>
 </div>
             </section>
