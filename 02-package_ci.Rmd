@@ -86,4 +86,4 @@ Now git add, commit the changes and push them to your repo and the action will r
 
 ## What next?
 
-Read on to Chapter \@ref{#understandingyaml} to get an introduction to the contents of the yaml files. 
+Read on to Chapter \@ref{#understanding-yaml} to get an introduction to the contents of the yaml files. 
