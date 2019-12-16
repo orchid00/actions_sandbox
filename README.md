@@ -20,7 +20,7 @@ We describe both ways here.
 ### Meet the team members 
 
 * 🤓 [Chris Brown](https://github.com/CStats) 🐦 [\@CStatsAU](https://twitter.com/CStatsAU)
-* 🤓 [Murray Cadzow](https://github.com/murraycadzow) 🐦 [\@Rhydwyn McGuire](https://twitter.com/murraycadzow)
+* 🤓 [Murray Cadzow](https://github.com/murraycadzow) 🐦 [\@murraycadzow](https://twitter.com/murraycadzow)
 * 🤓 [Paula A Martinez](https://github.com/orchid00) 🐦 [\@orchid00](https://twitter.com/orchid00)
 * 🤓 [Rhydwyn McGuire](https://github.com/rhydwyn) 🐦 [\@rhydwyn](https://twitter.com/rhydwyn)
 * 🤓 [David Neuzerling](https://github.com/mdneuzerling) 🐦 [\@mdneuzerling](https://twitter.com/mdneuzerling)
