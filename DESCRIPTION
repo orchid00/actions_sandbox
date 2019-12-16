@@ -1,13 +1,49 @@
 Package: actions_sandbox
 Title: Github Actions with R
 Version: 0.0.1
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
+Authors@R:
+    c(
+      person(given = "Chris",
+           family = "Brown",
+           role = c("aut"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+      person(given = "Murray",
+           family = "Cadzow",
+           role = c("aut"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+      person(given = "Paula",
+           family = "Martinez",
+           role = c("aut"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+      person(given = "Rhydwyn",
+           family = "McGuire",
+           role = c("aut"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+      person(given = "David",
+           family = "Neuzerling",
+           role = c("aut"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+      person(given = "David",
+           family = "Wilkinson",
+           role = c("aut"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+      person(given = "Saras",
+           family = "Windecker",
+           role = c("aut"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+      person(given = "Jim",
+           family = "Hester",
+           role = c("ctb"),
            email = "first.last@example.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Author: Author Name
+           )
 Maintainer: Author Name <email@email.com>
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
@@ -16,3 +52,4 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 Imports: 
     bookdown
+RoxygenNote: 6.1.1
