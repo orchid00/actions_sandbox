@@ -13,11 +13,11 @@ Authors@R:
            role = c("aut"),
            email = "murray.cadzow@otago.ac.nz",
            comment = c(ORCID = "0000-0002-2299-4136")),
-      person(given = "Paula",
+      person(given = "Paula A.",
            family = "Martinez",
-           role = c("aut"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID")),
+           role = c("aut", "cre"),
+           email = "p.martinez@uq.edu.au",
+           comment = c(ORCID = "0000-0002-8990-1985")),
       person(given = "Rhydwyn",
            family = "McGuire",
            role = c("aut"),
@@ -45,7 +45,7 @@ Authors@R:
            comment = c(ORCID = "YOUR-ORCID-ID"))
            )
 Maintainer: Author Name <email@email.com>
-Description: What the package does (one paragraph).
+Description: Learning how to use GitHub (GH) actions to run with R common tasks. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
