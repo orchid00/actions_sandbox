@@ -71,3 +71,16 @@ jobs:
 * `runs-on` tells GitHub what sort of environment should run the job. These environments are called "runners". GitHub supports Ubuntu, macOS and Windows Server, as well as support for self-hosted runners.
 * `uses` allows us to run other actions as part of our action. In this case, we're calling on actions that are defined in other repositories. The first action checks out the contents of our repository, and then next sets up R.
 * The remaining steps are the commands we want to run as part of our action, each with a name. Here we're installing the dependencies of our package, as well as the `rcmdcheck` package we use to check the package in our repository. Finally, we're executing the command that checks the package.
+
+
+## GitHub Secrets {#secrets}
+
+[GitHub secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) are a way to use values in your yaml that need to remain secret such as credentials, or information you want to keep private. Commonly this would be a [GitHub personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (_GITHUB_PAT_) that enables the action to perform operations such as _push_. These are set under the repository settings menu.
+
+![](images/add_secret.png)<!-- -->
+
+
+
+### Personal access tokens {#github-pat}
+
+Personal access tokens can be generated with differing levels of authority. To create one for your account got to https://github.com/settings/tokens and click "Generate new token". Then you can copy the value of the token into a secret for your repository so that a GitHub action can be authenticated as you.

@@ -1,14 +1,14 @@
 --- 
 title: "Github actions with R"
 author: "Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker"
-date: "2019-12-16"
+date: "2019-12-17"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [packages.bib]
 biblio-style: apalike
 link-citations: yes
 description: "An introduction to using github actions with R."
-rmd_files: ["index.Rmd", "02-package_ci.Rmd", "03-understanding_yaml.Rmd", "04-testing_with_renv.Rmd", "05-contributions.Rmd"]
+rmd_files: ["index.Rmd", "02-package_ci.Rmd", "03-documentation_actions.Rmd", "04-understanding_yaml.Rmd", "05-testing_with_renv.Rmd", "06-contributions.Rmd"]
 ---
 
 
