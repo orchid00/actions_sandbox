@@ -70,7 +70,7 @@ Now we need to `git add` and `commit` the yaml file, and `push` the changes to G
 
 ## Action to deploy a bookdown site
 
-The following yaml template will run `bookdown::render_book()` on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section \@ref(ghpages-setup). It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GITHUB_PAT_ and _EMAIL_. _GITHUB_PAT_ is a personal access token that has at least repo access, create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more). The action also assumes that you are compiling the book to an html format and the output directory is `_book`.
+The following yaml template will run `bookdown::render_book()` on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section \@ref(ghpages-setup). It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GITHUB_PAT_ and _EMAIL_. _GITHUB_PAT_ is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more). The action also assumes that you are compiling the book to an html format and the output directory is `_book`.
 
 Github action for .github/workflow/deploy_bookdown.yml
 ```
