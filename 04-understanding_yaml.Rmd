@@ -71,7 +71,7 @@ jobs:
 * The `on` parameter tells GitHub what should trigger this action. In this case, we want to check code whenever it is pushed, or on a pull request. The latter is particularly useful because if we're about to merge code into the master branch, we want it to pass tests!
 * The `name` of the action should be something that helps us identify at a glance what the action is doing. This is shown on github.com in the Actions tab of the repository.
 * `runs-on` tells GitHub what sort of environment should run the job. These environments are called "runners". GitHub supports Ubuntu, macOS and Windows Server, as well as support for self-hosted runners.
-* `uses` allows us to run other actions as part of our action. In this case, we're calling on actions that are defined in other repositories. The first action checks out the contents of our repository, and then next sets up R.
+* `uses` allows us to run other actions as part of our action. In this case, we're calling on actions that are defined in other repositories. The first action checks out the contents of our repository, and then sets up R.
 * The remaining steps are the commands we want to run as part of our action, each with a name. Here we're installing the dependencies of our package, as well as the `rcmdcheck` package we use to check the package in our repository. Finally, we're executing the command that checks the package.
 
 
