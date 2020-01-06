@@ -31,7 +31,7 @@ First we add the use of `pkgdown` to the package:
 usethis::use_pkgdown()
 ```
 
-Then we want to add in the github action for pkgdown to automatically add documentation. There is an existing yaml template example in the `actions` package:
+Then, we want to add in the github action for `pkgdown` to automatically add documentation. There is an existing yaml template example in the `actions` package:
 
 ```{r}
 usethis:::use_github_action(url = "https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml")
