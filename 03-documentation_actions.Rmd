@@ -23,7 +23,7 @@ git checkout master
 
 ## Action to deploy a pkgdown site
 
-To add auto-generating website documentation for a package, we can leverage off `pkgdown` and add it to an existing package, and then use a GitHub action to auto generate the docuemtation and deploy it to a GitHub pages site.
+To add auto-generating website documentation for a package, we can leverage off `pkgdown` and add it to an existing package, and then use a GitHub action to auto generate the documentation and deploy it to a GitHub pages site.
 
 First we add the use of `pkgdown` to the package:
 
