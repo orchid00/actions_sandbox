@@ -11,7 +11,7 @@ In order to serve html pages through GitHub pages the following needs to be done
 
 Derived from: https://pkgdown.r-lib.org/reference/deploy_site_github.html
 
-First we need to create an empty gh-pages branch. In bash:
+First, we need to create an empty gh-pages branch. In bash:
   
 ```
 git checkout --orphan gh-pages
@@ -132,4 +132,3 @@ usethis:::use_github_action(url = "https://raw.githubusercontent.com/ropenscilab
 ```
 
 N.B. `usethis:::use_github_action()` is not currently exported into the NAMESPACE of `usethis`.
-
