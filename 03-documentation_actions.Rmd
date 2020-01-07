@@ -64,7 +64,7 @@ jobs:
           Rscript -e "pkgdown:::deploy_local(new_process = FALSE, remote_url = 'https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git')"
 ```
 
-N.B. The usethis function is not currently exported into the NAMESPACE of `usethis` but is documented.
+N.B. The usethis function is not currently (Dec 2019) exported into the NAMESPACE of `usethis` but is documented.
 
 Now we need to `git add` and `commit` the yaml file, and `push` the changes to GitHub.
 
