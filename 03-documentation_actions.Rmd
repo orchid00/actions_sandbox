@@ -25,7 +25,7 @@ git checkout master
 
 To add auto-generating website documentation for a package, we can leverage off `pkgdown` and add it to an existing package, and then use a GitHub action to auto generate the documentation and deploy it to a GitHub pages site.
 
-First we add the use of `pkgdown` to the package:
+First, we add the use of `pkgdown` to the package:
 
 ```{r}
 usethis::use_pkgdown()
