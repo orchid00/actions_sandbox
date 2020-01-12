@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 So what’s actually going on in the yaml file? | Github actions with R</title>
   <meta name="description" content="An introduction to using github actions with R." />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 So what’s actually going on in the yaml file? | Github actions with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker" />
 
 
-<meta name="date" content="2019-12-17" />
+<meta name="date" content="2020-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -244,7 +244,7 @@ jobs:
 <li>The <code>on</code> parameter tells GitHub what should trigger this action. In this case, we want to check code whenever it is pushed, or on a pull request. The latter is particularly useful because if we’re about to merge code into the master branch, we want it to pass tests!</li>
 <li>The <code>name</code> of the action should be something that helps us identify at a glance what the action is doing. This is shown on github.com in the Actions tab of the repository.</li>
 <li><code>runs-on</code> tells GitHub what sort of environment should run the job. These environments are called “runners”. GitHub supports Ubuntu, macOS and Windows Server, as well as support for self-hosted runners.</li>
-<li><code>uses</code> allows us to run other actions as part of our action. In this case, we’re calling on actions that are defined in other repositories. The first action checks out the contents of our repository, and then next sets up R.</li>
+<li><code>uses</code> allows us to run other actions as part of our action. In this case, we’re calling on actions that are defined in other repositories. The first action checks out the contents of our repository, and then sets up R.</li>
 <li>The remaining steps are the commands we want to run as part of our action, each with a name. Here we’re installing the dependencies of our package, as well as the <code>rcmdcheck</code> package we use to check the package in our repository. Finally, we’re executing the command that checks the package.</li>
 </ul>
 </div>

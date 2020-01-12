@@ -8,7 +8,7 @@ In order to serve html pages through GitHub pages the following needs to be done
 
 Derived from: https://pkgdown.r-lib.org/reference/deploy_site_github.html
 
-First we need to create an empty gh-pages branch. In bash:
+First, we need to create an empty gh-pages branch. In bash:
   
 ```
 git checkout --orphan gh-pages
@@ -20,16 +20,16 @@ git checkout master
 
 ## Action to deploy a pkgdown site
 
-To add auto-generating website documentation for a package, we can leverage off `pkgdown` and add it to an existing package, and then use a GitHub action to auto generate the docuemtation and deploy it to a GitHub pages site.
+To add auto-generating website documentation for a package, we can leverage off `pkgdown` and add it to an existing package, and then use a GitHub action to auto generate the documentation and deploy it to a GitHub pages site.
 
-First we add the use of `pkgdown` to the package:
+First, we add the use of `pkgdown` to the package:
 
 
 ```r
 usethis::use_pkgdown()
 ```
 
-Then we want to add in the github action for pkgdown to automatically add documentation. There is an existing yaml template example in the `actions` package:
+Then, we want to add in the github action for `pkgdown` to automatically add documentation. There is an existing yaml template example in the `actions` package:
 
 
 ```r
@@ -63,13 +63,13 @@ jobs:
           Rscript -e "pkgdown:::deploy_local(new_process = FALSE, remote_url = 'https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git')"
 ```
 
-N.B. The usethis function is not currently exported into the NAMESPACE of `usethis` but is documented.
+N.B. The usethis function is not currently (Dec 2019) exported into the NAMESPACE of `usethis` but is documented.
 
-Now we need to git add and commit the yaml file, and push the changes to Github.
+Now we need to `git add` and `commit` the yaml file, and `push` the changes to GitHub.
 
 ## Action to deploy a bookdown site
 
-The following yaml template will run `bookdown::render_book()` on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section \@ref(ghpages-setup). It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GITHUB_PAT_ and _EMAIL_. _GITHUB_PAT_ is a personal access token that has at least repo access, create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more). The action also assumes that you are compiling the book to an html format and the output directory is `_book`.
+The following yaml template will run `bookdown::render_book()` on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section \@ref(ghpages-setup). It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GITHUB_PAT_ and _EMAIL_. _GITHUB_PAT_ is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more). The action also assumes that you are compiling the book to an html format and the output directory is `_book`.
 
 Github action for .github/workflow/deploy_bookdown.yml
 ```
@@ -77,10 +77,7 @@ on:
   push:
      branches:
        - master
-  pull_request:
-     branches:
-       - master
-  
+
 
 name: renderbook
 
@@ -134,5 +131,4 @@ To use the above yaml file that is responsible for deploying this book, you can 
 usethis:::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/master/.github/workflows/deploy_bookdown.yml")
 ```
 
-N.B. `usethis:::use_github_action()` is not currently exported into the NAMESPACE of `usethis`.
-
+N.B. `usethis:::use_github_action()` is not currently (Dec 2019) exported into the NAMESPACE of `usethis`, but it is likely to be added soon.

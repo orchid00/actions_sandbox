@@ -1,7 +1,7 @@
 --- 
 title: "Github actions with R"
 author: "Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker"
-date: "2019-12-17"
+date: "2020-01-12"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [packages.bib]
