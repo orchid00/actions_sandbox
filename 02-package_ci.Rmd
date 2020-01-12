@@ -84,6 +84,8 @@ If you are not interested in syncing your package to codecov, this part is not n
 
 Now git add, commit the changes and push them to your repo and the action will run! 
 
+
 ## What next?
 
 Read on to Chapter \@ref(understanding-yaml) to get an introduction to the contents of the yaml files. 
+
