@@ -77,12 +77,18 @@ To make the file work as is, a token for codecov must be added to your secrets p
 We explain how to this below!
 If you are not interested in syncing your package to codecov, this part is not necessary. 
 
-## Adding secrets
+## Triggering actions
 
 
 
 
 Now git add, commit the changes and push them to your repo and the action will run! 
+
+On your repository you can see the what action are running under the "Actions" tab.
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::include_graphics("images/actions_panel.png")
+```
 
 
 ## What next?
