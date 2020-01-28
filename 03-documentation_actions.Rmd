@@ -34,7 +34,7 @@ usethis::use_pkgdown()
 Then, we want to add in the github action for `pkgdown` to automatically add documentation. There is an existing yaml template example in the `actions` package:
 
 ```{r}
-usethis:::use_github_action(url = "https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml")
+usethis::use_github_action(url = "https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml")
 ```
 
 The yaml file should be located in .github/workflows/pkgdown.yml and looks like:
@@ -64,7 +64,6 @@ jobs:
           Rscript -e "pkgdown:::deploy_local(new_process = FALSE, remote_url = 'https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git')"
 ```
 
-N.B. The usethis function is not currently (Dec 2019) exported into the NAMESPACE of `usethis` but is documented.
 
 Now we need to `git add` and `commit` the yaml file, and `push` the changes to GitHub.
 
