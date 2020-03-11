@@ -127,7 +127,7 @@ This action is performed using two jobs, the first renders html, and the second 
 
 To use the above yaml file that is responsible for deploying this book, you can add it to your book using `usethis`
 ```{r}
-usethis:::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/master/.github/workflows/deploy_bookdown.yml")
+usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/master/.github/workflows/deploy_bookdown.yml")
 ```
 
-N.B. `usethis:::use_github_action()` is not currently (Dec 2019) exported into the NAMESPACE of `usethis`, but it is likely to be added soon.
+
