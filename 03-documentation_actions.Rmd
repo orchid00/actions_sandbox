@@ -133,23 +133,16 @@ usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs
 
 ## Action to deploy a blogdown site {#deploy-blogdown}
 
-The github action to deploy a blogdown site is very similar to that of the bookdown action in section \@ref(deploy-bookdown). There are additional configuration steps beyond using the github action to get the site to be correctly deployed - this is because blogdown uses Hugo and github pages uses Jekyll. It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GITHUB_PAT_ and _EMAIL_. _GITHUB_PAT_ is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more).
+The github action to deploy a blogdown site is very similar to that of the bookdown action in section \@ref(deploy-bookdown) but runs `blogdown::build_site()`. There are additional configuration steps beyond using the github action to get the site to be correctly deployed - this is because blogdown uses Hugo and github pages uses Jekyll. It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GITHUB_PAT_ and _EMAIL_. _GITHUB_PAT_ is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more).
 
-- Create new project - blogdown
-- create empty github repository
-- add git to project
-- add files (excluding public/)
-- config.toml needs to have base url changed to "/<repo_name>/"
-- follow steps for gh-pages
-- add .nojekyll to public/
+On an existing blogdown project with git, make sure to add and commit the content you have created, except for `public/*`. Change the base url in `config.toml` to `baseurl = "/<repo name>/"`. Create the empty file _public/.nojekyll_ and add and commit it. This tells github not to use Jekyll when displaying your pages. Follow the steps to create an orphaned gh-pages branch in Section \@ref(ghpages-setup).
 
+Github action for .github/workflow/deploy_blogdown.yml
 ```
 on:
   push:
      branches:
        - master
-
-
 
 name: deployblog
 
@@ -196,6 +189,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_PAT }} # https://github.com/settings/tokens
           BUILD_DIR: public/                     # "_site/" by default
 ```
+
+This action will build your blogdown site and then add, commit, and push the resultant files in `public/` onto your gh-pages branch where they will be viewable at the url \<user/org_name>.github.io/\<repository_name>.
 
 To use the above yaml file in your blogdown blog you can add it using `usethis`
 ```{r}
