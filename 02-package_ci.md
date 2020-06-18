@@ -79,13 +79,28 @@ To make the file work as is, a token for codecov must be added to your secrets p
 We explain how to this below!
 If you are not interested in syncing your package to codecov, this part is not necessary. 
 
-## Adding secrets
+## Triggering actions
 
 
 
 
 Now git add, commit the changes and push them to your repo and the action will run! 
 
+On your repository you can see the what action are running under the "Actions" tab.
+
+![](images/actions_panel.png)<!-- -->
+
+## Did it succeed?
+
+You can get information about the status of your github action by looking under the actions tab and once completed there will be either a green tick or red cross next to the action. By clicking on the action itself while it's running or after it's finished you can view the run logs which can be useful to understand if your action failed.
+
+![](images/actions_panel2.png)<!-- -->
+
+Further information can be found by clicking on a particular action and there is the option to make this information displayed as a badge on your README by using the create badge button and copying the markdown code into your README.md file.
+
+![](images/rcmd_check_status.png)<!-- -->
+
+![](images/create_badge.png)<!-- -->
 
 ## What next?
 

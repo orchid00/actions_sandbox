@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Example workflow to set up continuous integration for packages | Github actions with R</title>
   <meta name="description" content="An introduction to using github actions with R." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Example workflow to set up continuous integration for packages | Github actions with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker" />
 
 
-<meta name="date" content="2020-01-12" />
+<meta name="date" content="2020-06-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -151,13 +151,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.1" data-path="packageci.html"><a href="packageci.html#ci-release-check"><i class="fa fa-check"></i><b>2.2.1</b> CI release check</a></li>
 <li class="chapter" data-level="2.2.2" data-path="packageci.html"><a href="packageci.html#ci-full-check"><i class="fa fa-check"></i><b>2.2.2</b> CI full check</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="packageci.html"><a href="packageci.html#adding-secrets"><i class="fa fa-check"></i><b>2.3</b> Adding secrets</a></li>
-<li class="chapter" data-level="2.4" data-path="packageci.html"><a href="packageci.html#what-next"><i class="fa fa-check"></i><b>2.4</b> What next?</a></li>
+<li class="chapter" data-level="2.3" data-path="packageci.html"><a href="packageci.html#triggering-actions"><i class="fa fa-check"></i><b>2.3</b> Triggering actions</a></li>
+<li class="chapter" data-level="2.4" data-path="packageci.html"><a href="packageci.html#did-it-succeed"><i class="fa fa-check"></i><b>2.4</b> Did it succeed?</a></li>
+<li class="chapter" data-level="2.5" data-path="packageci.html"><a href="packageci.html#what-next"><i class="fa fa-check"></i><b>2.5</b> What next?</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html"><i class="fa fa-check"></i><b>3</b> Websites using pkgdown, bookdown, and blogdown</a><ul>
 <li class="chapter" data-level="3.1" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#ghpages-setup"><i class="fa fa-check"></i><b>3.1</b> Create gh-pages branch</a></li>
-<li class="chapter" data-level="3.2" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#action-to-deploy-a-pkgdown-site"><i class="fa fa-check"></i><b>3.2</b> Action to deploy a pkgdown site</a></li>
-<li class="chapter" data-level="3.3" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#action-to-deploy-a-bookdown-site"><i class="fa fa-check"></i><b>3.3</b> Action to deploy a bookdown site</a></li>
+<li class="chapter" data-level="3.2" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#deploy-pkgdown"><i class="fa fa-check"></i><b>3.2</b> Action to deploy a pkgdown site</a></li>
+<li class="chapter" data-level="3.3" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#deploy-bookdown"><i class="fa fa-check"></i><b>3.3</b> Action to deploy a bookdown site</a></li>
+<li class="chapter" data-level="3.4" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#deploy-blogdown"><i class="fa fa-check"></i><b>3.4</b> Action to deploy a blogdown site</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="understanding-yaml.html"><a href="understanding-yaml.html"><i class="fa fa-check"></i><b>4</b> So what’s actually going on in the yaml file?</a><ul>
 <li class="chapter" data-level="4.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#r-syntax-options"><i class="fa fa-check"></i><b>4.1</b> R Syntax options</a></li>
@@ -242,12 +244,22 @@ We explain how to this below!
 If you are not interested in syncing your package to codecov, this part is not necessary.</p>
 </div>
 </div>
-<div id="adding-secrets" class="section level2">
-<h2><span class="header-section-number">2.3</span> Adding secrets</h2>
+<div id="triggering-actions" class="section level2">
+<h2><span class="header-section-number">2.3</span> Triggering actions</h2>
 <p>Now git add, commit the changes and push them to your repo and the action will run!</p>
+<p>On your repository you can see the what action are running under the “Actions” tab.</p>
+<p><img src="images/actions_panel.png" /><!-- --></p>
+</div>
+<div id="did-it-succeed" class="section level2">
+<h2><span class="header-section-number">2.4</span> Did it succeed?</h2>
+<p>You can get information about the status of your github action by looking under the actions tab and once completed there will be either a green tick or red cross next to the action. By clicking on the action itself while it’s running or after it’s finished you can view the run logs which can be useful to understand if your action failed.</p>
+<p><img src="images/actions_panel2.png" /><!-- --></p>
+<p>Further information can be found by clicking on a particular action and there is the option to make this information displayed as a badge on your README by using the create badge button and copying the markdown code into your README.md file.</p>
+<p><img src="images/rcmd_check_status.png" /><!-- --></p>
+<p><img src="images/create_badge.png" /><!-- --></p>
 </div>
 <div id="what-next" class="section level2">
-<h2><span class="header-section-number">2.4</span> What next?</h2>
+<h2><span class="header-section-number">2.5</span> What next?</h2>
 <p>Read on to Chapter <a href="understanding-yaml.html#understanding-yaml">4</a> to get an introduction to the contents of the yaml files.</p>
 
 </div>

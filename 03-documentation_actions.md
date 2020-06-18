@@ -18,7 +18,7 @@ git push origin gh-pages
 git checkout master
 ```
 
-## Action to deploy a pkgdown site
+## Action to deploy a pkgdown site {#deploy-pkgdown}
 
 To add auto-generating website documentation for a package, we can leverage off `pkgdown` and add it to an existing package, and then use a GitHub action to auto generate the documentation and deploy it to a GitHub pages site.
 
@@ -33,7 +33,7 @@ Then, we want to add in the github action for `pkgdown` to automatically add doc
 
 
 ```r
-usethis:::use_github_action(url = "https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml")
+usethis::use_github_action(url = "https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml")
 ```
 
 The yaml file should be located in .github/workflows/pkgdown.yml and looks like:
@@ -63,11 +63,10 @@ jobs:
           Rscript -e "pkgdown:::deploy_local(new_process = FALSE, remote_url = 'https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git')"
 ```
 
-N.B. The usethis function is not currently (Dec 2019) exported into the NAMESPACE of `usethis` but is documented.
 
 Now we need to `git add` and `commit` the yaml file, and `push` the changes to GitHub.
 
-## Action to deploy a bookdown site
+## Action to deploy a bookdown site {#deploy-bookdown}
 
 The following yaml template will run `bookdown::render_book()` on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section \@ref(ghpages-setup). It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GITHUB_PAT_ and _EMAIL_. _GITHUB_PAT_ is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more). The action also assumes that you are compiling the book to an html format and the output directory is `_book`.
 
@@ -128,7 +127,73 @@ This action is performed using two jobs, the first renders html, and the second 
 To use the above yaml file that is responsible for deploying this book, you can add it to your book using `usethis`
 
 ```r
-usethis:::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/master/.github/workflows/deploy_bookdown.yml")
+usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/master/.github/workflows/deploy_bookdown.yml")
 ```
 
-N.B. `usethis:::use_github_action()` is not currently (Dec 2019) exported into the NAMESPACE of `usethis`, but it is likely to be added soon.
+
+## Action to deploy a blogdown site {#deploy-blogdown}
+
+The github action to deploy a blogdown site is very similar to that of the bookdown action in section \@ref(deploy-bookdown) but runs `blogdown::build_site()`. There are additional configuration steps beyond using the github action to get the site to be correctly deployed - this is because blogdown uses Hugo and github pages uses Jekyll. It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GITHUB_PAT_ and _EMAIL_. _GITHUB_PAT_ is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more).
+
+On an existing blogdown project with git, make sure to add and commit the content you have created, except for `public/*`. Change the base url in `config.toml` to `baseurl = "/<repo name>/"`. Create the empty file _public/.nojekyll_ and add and commit it. This tells github not to use Jekyll when displaying your pages. Follow the steps to create an orphaned gh-pages branch in Section \@ref(ghpages-setup).
+
+Github action for .github/workflow/deploy_blogdown.yml
+```
+on:
+  push:
+     branches:
+       - master
+
+name: deployblog
+
+jobs:
+  blogdown:
+    name: Render-Blog
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: Install rmarkdown
+        run: Rscript -e 'install.packages(c("rmarkdown","blogdown"))'
+      - name: install hugo
+        run: Rscript -e 'blogdown::install_hugo()'
+      - name: Render blog
+        run: Rscript -e 'blogdown::build_site()'
+      - uses: actions/upload-artifact@v1
+        with:
+          name: public
+          path: public/
+
+# Need to first create an empty gh-pages branch
+# see https://pkgdown.r-lib.org/reference/deploy_site_github.html
+# and also add secrets for a GITHUB_PAT and EMAIL to the repository
+# gh-action from Cecilapp/GitHub-Pages-deploy
+  checkout-and-deploy:
+   runs-on: ubuntu-latest
+   needs: blogdown
+   steps:
+     - name: Checkout
+       uses: actions/checkout@master
+     - name: Download artifact
+       uses: actions/download-artifact@v1.0.0
+       with:
+         # Artifact name
+         name: public # optional
+         # Destination path
+         path: public # optional
+     - name: Deploy to GitHub Pages
+       uses: Cecilapp/GitHub-Pages-deploy@master
+       env:
+          EMAIL: ${{ secrets.EMAIL }}               # must be a verified email
+          GH_TOKEN: ${{ secrets.GITHUB_PAT }} # https://github.com/settings/tokens
+          BUILD_DIR: public/                     # "_site/" by default
+```
+
+This action will build your blogdown site and then add, commit, and push the resultant files in `public/` onto your gh-pages branch where they will be viewable at the url \<user/org_name>.github.io/\<repository_name>.
+
+To use the above yaml file in your blogdown blog you can add it using `usethis`
+
+```r
+usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/master/.github/workflows/deploy_blogdown.yml")
+```

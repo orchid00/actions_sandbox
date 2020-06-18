@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Websites using pkgdown, bookdown, and blogdown | Github actions with R</title>
   <meta name="description" content="An introduction to using github actions with R." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Websites using pkgdown, bookdown, and blogdown | Github actions with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker" />
 
 
-<meta name="date" content="2020-01-12" />
+<meta name="date" content="2020-06-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -151,13 +151,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.1" data-path="packageci.html"><a href="packageci.html#ci-release-check"><i class="fa fa-check"></i><b>2.2.1</b> CI release check</a></li>
 <li class="chapter" data-level="2.2.2" data-path="packageci.html"><a href="packageci.html#ci-full-check"><i class="fa fa-check"></i><b>2.2.2</b> CI full check</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="packageci.html"><a href="packageci.html#adding-secrets"><i class="fa fa-check"></i><b>2.3</b> Adding secrets</a></li>
-<li class="chapter" data-level="2.4" data-path="packageci.html"><a href="packageci.html#what-next"><i class="fa fa-check"></i><b>2.4</b> What next?</a></li>
+<li class="chapter" data-level="2.3" data-path="packageci.html"><a href="packageci.html#triggering-actions"><i class="fa fa-check"></i><b>2.3</b> Triggering actions</a></li>
+<li class="chapter" data-level="2.4" data-path="packageci.html"><a href="packageci.html#did-it-succeed"><i class="fa fa-check"></i><b>2.4</b> Did it succeed?</a></li>
+<li class="chapter" data-level="2.5" data-path="packageci.html"><a href="packageci.html#what-next"><i class="fa fa-check"></i><b>2.5</b> What next?</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html"><i class="fa fa-check"></i><b>3</b> Websites using pkgdown, bookdown, and blogdown</a><ul>
 <li class="chapter" data-level="3.1" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#ghpages-setup"><i class="fa fa-check"></i><b>3.1</b> Create gh-pages branch</a></li>
-<li class="chapter" data-level="3.2" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#action-to-deploy-a-pkgdown-site"><i class="fa fa-check"></i><b>3.2</b> Action to deploy a pkgdown site</a></li>
-<li class="chapter" data-level="3.3" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#action-to-deploy-a-bookdown-site"><i class="fa fa-check"></i><b>3.3</b> Action to deploy a bookdown site</a></li>
+<li class="chapter" data-level="3.2" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#deploy-pkgdown"><i class="fa fa-check"></i><b>3.2</b> Action to deploy a pkgdown site</a></li>
+<li class="chapter" data-level="3.3" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#deploy-bookdown"><i class="fa fa-check"></i><b>3.3</b> Action to deploy a bookdown site</a></li>
+<li class="chapter" data-level="3.4" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#deploy-blogdown"><i class="fa fa-check"></i><b>3.4</b> Action to deploy a blogdown site</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="understanding-yaml.html"><a href="understanding-yaml.html"><i class="fa fa-check"></i><b>4</b> So what’s actually going on in the yaml file?</a><ul>
 <li class="chapter" data-level="4.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#r-syntax-options"><i class="fa fa-check"></i><b>4.1</b> R Syntax options</a></li>
@@ -200,13 +202,13 @@ git commit --allow-empty -m &#39;Initial gh-pages commit&#39;
 git push origin gh-pages
 git checkout master</code></pre>
 </div>
-<div id="action-to-deploy-a-pkgdown-site" class="section level2">
+<div id="deploy-pkgdown" class="section level2">
 <h2><span class="header-section-number">3.2</span> Action to deploy a pkgdown site</h2>
 <p>To add auto-generating website documentation for a package, we can leverage off <code>pkgdown</code> and add it to an existing package, and then use a GitHub action to auto generate the documentation and deploy it to a GitHub pages site.</p>
 <p>First, we add the use of <code>pkgdown</code> to the package:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#cb10-1"></a>usethis<span class="op">::</span><span class="kw">use_pkgdown</span>()</span></code></pre></div>
 <p>Then, we want to add in the github action for <code>pkgdown</code> to automatically add documentation. There is an existing yaml template example in the <code>actions</code> package:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#cb11-1"></a>usethis<span class="op">:::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#cb11-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/r-lib/actions/master/examples/pkgdown.yaml&quot;</span>)</span></code></pre></div>
 <p>The yaml file should be located in .github/workflows/pkgdown.yml and looks like:</p>
 <pre><code>on:
   push:
@@ -231,10 +233,9 @@ jobs:
       - name: Deploy package
         run: |
           Rscript -e &quot;pkgdown:::deploy_local(new_process = FALSE, remote_url = &#39;https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git&#39;)&quot;</code></pre>
-<p>N.B. The usethis function is not currently (Dec 2019) exported into the NAMESPACE of <code>usethis</code> but is documented.</p>
 <p>Now we need to <code>git add</code> and <code>commit</code> the yaml file, and <code>push</code> the changes to GitHub.</p>
 </div>
-<div id="action-to-deploy-a-bookdown-site" class="section level2">
+<div id="deploy-bookdown" class="section level2">
 <h2><span class="header-section-number">3.3</span> Action to deploy a bookdown site</h2>
 <p>The following yaml template will run <code>bookdown::render_book()</code> on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section <a href="websites-using-pkgdown-bookdown-and-blogdown.html#ghpages-setup">3.1</a>. It also requires the creation of two GitHub secrets (see section <a href="understanding-yaml.html#secrets">4.2</a>), <em>GITHUB_PAT</em> and <em>EMAIL</em>. <em>GITHUB_PAT</em> is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section <a href="understanding-yaml.html#github-pat">4.2.1</a> for more). The action also assumes that you are compiling the book to an html format and the output directory is <code>_book</code>.</p>
 <p>Github action for .github/workflow/deploy_bookdown.yml</p>
@@ -289,8 +290,65 @@ jobs:
     </code></pre>
 <p>This action is performed using two jobs, the first renders html, and the second deploys the html to the gh-pages branch so that it can be viewed using the url &lt;user/org_name&gt;.github.io/&lt;repository_name&gt;. It achieves this by passing an artifact (the <code>_book</code> directory) between jobs. Further information about the action yaml files can be found in chapter <a href="understanding-yaml.html#understanding-yaml">4</a>.</p>
 <p>To use the above yaml file that is responsible for deploying this book, you can add it to your book using <code>usethis</code></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#cb14-1"></a>usethis<span class="op">:::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/master/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
-<p>N.B. <code>usethis:::use_github_action()</code> is not currently (Dec 2019) exported into the NAMESPACE of <code>usethis</code>, but it is likely to be added soon.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#cb14-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/master/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
+</div>
+<div id="deploy-blogdown" class="section level2">
+<h2><span class="header-section-number">3.4</span> Action to deploy a blogdown site</h2>
+<p>The github action to deploy a blogdown site is very similar to that of the bookdown action in section <a href="websites-using-pkgdown-bookdown-and-blogdown.html#deploy-bookdown">3.3</a> but runs <code>blogdown::build_site()</code>. There are additional configuration steps beyond using the github action to get the site to be correctly deployed - this is because blogdown uses Hugo and github pages uses Jekyll. It also requires the creation of two GitHub secrets (see section <a href="understanding-yaml.html#secrets">4.2</a>), <em>GITHUB_PAT</em> and <em>EMAIL</em>. <em>GITHUB_PAT</em> is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section <a href="understanding-yaml.html#github-pat">4.2.1</a> for more).</p>
+<p>On an existing blogdown project with git, make sure to add and commit the content you have created, except for <code>public/*</code>. Change the base url in <code>config.toml</code> to <code>baseurl = "/&lt;repo name&gt;/"</code>. Create the empty file <em>public/.nojekyll</em> and add and commit it. This tells github not to use Jekyll when displaying your pages. Follow the steps to create an orphaned gh-pages branch in Section <a href="websites-using-pkgdown-bookdown-and-blogdown.html#ghpages-setup">3.1</a>.</p>
+<p>Github action for .github/workflow/deploy_blogdown.yml</p>
+<pre><code>on:
+  push:
+     branches:
+       - master
+
+name: deployblog
+
+jobs:
+  blogdown:
+    name: Render-Blog
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: Install rmarkdown
+        run: Rscript -e &#39;install.packages(c(&quot;rmarkdown&quot;,&quot;blogdown&quot;))&#39;
+      - name: install hugo
+        run: Rscript -e &#39;blogdown::install_hugo()&#39;
+      - name: Render blog
+        run: Rscript -e &#39;blogdown::build_site()&#39;
+      - uses: actions/upload-artifact@v1
+        with:
+          name: public
+          path: public/
+
+# Need to first create an empty gh-pages branch
+# see https://pkgdown.r-lib.org/reference/deploy_site_github.html
+# and also add secrets for a GITHUB_PAT and EMAIL to the repository
+# gh-action from Cecilapp/GitHub-Pages-deploy
+  checkout-and-deploy:
+   runs-on: ubuntu-latest
+   needs: blogdown
+   steps:
+     - name: Checkout
+       uses: actions/checkout@master
+     - name: Download artifact
+       uses: actions/download-artifact@v1.0.0
+       with:
+         # Artifact name
+         name: public # optional
+         # Destination path
+         path: public # optional
+     - name: Deploy to GitHub Pages
+       uses: Cecilapp/GitHub-Pages-deploy@master
+       env:
+          EMAIL: ${{ secrets.EMAIL }}               # must be a verified email
+          GH_TOKEN: ${{ secrets.GITHUB_PAT }} # https://github.com/settings/tokens
+          BUILD_DIR: public/                     # &quot;_site/&quot; by default</code></pre>
+<p>This action will build your blogdown site and then add, commit, and push the resultant files in <code>public/</code> onto your gh-pages branch where they will be viewable at the url &lt;user/org_name&gt;.github.io/&lt;repository_name&gt;.</p>
+<p>To use the above yaml file in your blogdown blog you can add it using <code>usethis</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#cb16-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/master/.github/workflows/deploy_blogdown.yml&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
