@@ -26,7 +26,7 @@ For example, there are actions that will automatically trigger:
 - rendering/compiling e.g. of rmarkdown, bookdown, blogdowns etc
 
 GitHub actions follow the steps designated in a `yaml` file, which we place in the `.github/workflows` folder of the repo. 
-We can add these `yaml` files to our repo either by clicking on a series of steps on GitHub.com, or using wrapper functions provided by the `usethis` package, depending on which actions you which to include.
+We can add these `yaml` files to our repo either by clicking on a series of steps on GitHub.com, or using wrapper functions provided by the `usethis` package, depending on which actions you wish to include.
 We describe both ways here. 
 
 ### Usethis Wrappers 
