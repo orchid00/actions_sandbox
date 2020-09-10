@@ -31,7 +31,7 @@ We describe both ways here.
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropenscilabs/CIsandbox/issues).
+* Please [report any issues or bugs](https://github.com/ropenscilabs/actions_sandbox/issues).
 * License: MIT
 * Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
