@@ -60,7 +60,7 @@ jobs:
         run: R CMD INSTALL .
       - name: Deploy package
         run: |
-          Rscript -e "pkgdown:::deploy_local(new_process = FALSE, remote_url = 'https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git')"
+          Rscript -e "pkgdown:::deploy_local(new_process = FALSE, remote_url = 'https://x-access-token:${{secrets.GH_TOKEN}}@github.com/${{github.repository}}.git')"
 ```
 
 
@@ -68,7 +68,7 @@ Now we need to `git add` and `commit` the yaml file, and `push` the changes to G
 
 ## Action to deploy a bookdown site {#deploy-bookdown}
 
-The following yaml template will run `bookdown::render_book()` on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section \@ref(ghpages-setup). It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GITHUB_PAT_ and _EMAIL_. _GITHUB_PAT_ is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more). The action also assumes that you are compiling the book to an html format and the output directory is `_book`.
+The following yaml template will run `bookdown::render_book()` on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section \@ref(ghpages-setup). It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GH_PAT_ and _EMAIL_. _GH_PAT_ is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more). The action also assumes that you are compiling the book to an html format and the output directory is `_book`.
 
 Github action for .github/workflow/deploy_bookdown.yml
 ```
@@ -99,7 +99,7 @@ jobs:
   
 # Need to first create an empty gh-pages branch
 # see https://pkgdown.r-lib.org/reference/deploy_site_github.html
-# and also add secrets for a GITHUB_PAT and EMAIL to the repository
+# and also add secrets for a GH_PAT and EMAIL to the repository
 # gh-action from Cecilapp/GitHub-Pages-deploy
   checkout-and-deploy:
    runs-on: ubuntu-latest
@@ -118,7 +118,7 @@ jobs:
        uses: Cecilapp/GitHub-Pages-deploy@master
        env:
           EMAIL: ${{ secrets.EMAIL }}               # must be a verified email
-          GH_TOKEN: ${{ secrets.GITHUB_PAT }} # https://github.com/settings/tokens
+          GH_TOKEN: ${{ secrets.GH_PAT }} # https://github.com/settings/tokens
           BUILD_DIR: _book/                     # "_site/" by default
     
 ``` 
@@ -133,7 +133,7 @@ usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs
 
 ## Action to deploy a blogdown site {#deploy-blogdown}
 
-The github action to deploy a blogdown site is very similar to that of the bookdown action in section \@ref(deploy-bookdown) but runs `blogdown::build_site()`. There are additional configuration steps beyond using the github action to get the site to be correctly deployed - this is because blogdown uses Hugo and github pages uses Jekyll. It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GITHUB_PAT_ and _EMAIL_. _GITHUB_PAT_ is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more).
+The github action to deploy a blogdown site is very similar to that of the bookdown action in section \@ref(deploy-bookdown) but runs `blogdown::build_site()`. There are additional configuration steps beyond using the github action to get the site to be correctly deployed - this is because blogdown uses Hugo and github pages uses Jekyll. It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GH_PAT_ and _EMAIL_. _GH_PAT_ is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more).
 
 On an existing blogdown project with git, make sure to add and commit the content you have created, except for `public/*`. Change the base url in `config.toml` to `baseurl = "/<repo name>/"`. Create the empty file _public/.nojekyll_ and add and commit it. This tells github not to use Jekyll when displaying your pages. Follow the steps to create an orphaned gh-pages branch in Section \@ref(ghpages-setup).
 
@@ -167,7 +167,7 @@ jobs:
 
 # Need to first create an empty gh-pages branch
 # see https://pkgdown.r-lib.org/reference/deploy_site_github.html
-# and also add secrets for a GITHUB_PAT and EMAIL to the repository
+# and also add secrets for a GH_PAT and EMAIL to the repository
 # gh-action from Cecilapp/GitHub-Pages-deploy
   checkout-and-deploy:
    runs-on: ubuntu-latest
@@ -186,7 +186,7 @@ jobs:
        uses: Cecilapp/GitHub-Pages-deploy@master
        env:
           EMAIL: ${{ secrets.EMAIL }}               # must be a verified email
-          GH_TOKEN: ${{ secrets.GITHUB_PAT }} # https://github.com/settings/tokens
+          GH_TOKEN: ${{ secrets.GH_PAT }} # https://github.com/settings/tokens
           BUILD_DIR: public/                     # "_site/" by default
 ```
 

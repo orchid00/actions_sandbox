@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 So what’s actually going on in the yaml file? | Github actions with R</title>
   <meta name="description" content="An introduction to using github actions with R." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 So what’s actually going on in the yaml file? | Github actions with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker" />
 
 
-<meta name="date" content="2020-06-18" />
+<meta name="date" content="2020-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
@@ -206,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         steps:
         - uses: actions/first-interaction@v1
           with:
-            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            repo-token: ${{ secrets.GH_TOKEN }}
             issue-message: &#39;Hi ! there!! thanks for your contribution!, you are awesome! &#39;
             pr-message: &#39;Hey what an input! please give us a bit of time to review it! We will be in touch soon.&#39;</code></pre>
 </p>
@@ -241,7 +242,7 @@ jobs:
       - name: &lt;namestep3&gt;
         run: |
           git commit &lt;some file&gt;.md -m &#39;Re-build &lt;file&gt;.Rmd&#39; || echo &quot;No changes to commit&quot;
-          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo &quot;No changes to commit&quot;</code></pre>
+          git push https://${{github.actor}}:${{secrets.GH_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo &quot;No changes to commit&quot;</code></pre>
 <ul>
 <li>The <code>on</code> parameter tells GitHub what should trigger this action. In this case, we want to check code whenever it is pushed, or on a pull request. The latter is particularly useful because if we’re about to merge code into the master branch, we want it to pass tests!</li>
 <li>The <code>name</code> of the action should be something that helps us identify at a glance what the action is doing. This is shown on github.com in the Actions tab of the repository.</li>
@@ -252,7 +253,7 @@ jobs:
 </div>
 <div id="secrets" class="section level2">
 <h2><span class="header-section-number">4.2</span> GitHub Secrets</h2>
-<p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets">GitHub secrets</a> are a way to use values in your yaml that need to remain secret such as credentials, or information you want to keep private. Commonly this would be a <a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line">GitHub personal access token</a> (<em>GITHUB_PAT</em>) that enables the action to perform operations such as <em>push</em>. These are set under the repository settings menu.</p>
+<p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets">GitHub secrets</a> are a way to use values in your yaml that need to remain secret such as credentials, or information you want to keep private. Commonly this would be a <a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line">GitHub personal access token</a> (<em>GH_PAT</em>) that enables the action to perform operations such as <em>push</em>. These are set under the repository settings menu.</p>
 <p><img src="images/add_secret.png" /><!-- --></p>
 <div id="github-pat" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Personal access tokens</h3>

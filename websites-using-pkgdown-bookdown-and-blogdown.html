@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Websites using pkgdown, bookdown, and blogdown | Github actions with R</title>
   <meta name="description" content="An introduction to using github actions with R." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Websites using pkgdown, bookdown, and blogdown | Github actions with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker" />
 
 
-<meta name="date" content="2020-06-18" />
+<meta name="date" content="2020-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
@@ -232,12 +233,12 @@ jobs:
         run: R CMD INSTALL .
       - name: Deploy package
         run: |
-          Rscript -e &quot;pkgdown:::deploy_local(new_process = FALSE, remote_url = &#39;https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git&#39;)&quot;</code></pre>
+          Rscript -e &quot;pkgdown:::deploy_local(new_process = FALSE, remote_url = &#39;https://x-access-token:${{secrets.GH_TOKEN}}@github.com/${{github.repository}}.git&#39;)&quot;</code></pre>
 <p>Now we need to <code>git add</code> and <code>commit</code> the yaml file, and <code>push</code> the changes to GitHub.</p>
 </div>
 <div id="deploy-bookdown" class="section level2">
 <h2><span class="header-section-number">3.3</span> Action to deploy a bookdown site</h2>
-<p>The following yaml template will run <code>bookdown::render_book()</code> on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section <a href="websites-using-pkgdown-bookdown-and-blogdown.html#ghpages-setup">3.1</a>. It also requires the creation of two GitHub secrets (see section <a href="understanding-yaml.html#secrets">4.2</a>), <em>GITHUB_PAT</em> and <em>EMAIL</em>. <em>GITHUB_PAT</em> is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section <a href="understanding-yaml.html#github-pat">4.2.1</a> for more). The action also assumes that you are compiling the book to an html format and the output directory is <code>_book</code>.</p>
+<p>The following yaml template will run <code>bookdown::render_book()</code> on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section <a href="websites-using-pkgdown-bookdown-and-blogdown.html#ghpages-setup">3.1</a>. It also requires the creation of two GitHub secrets (see section <a href="understanding-yaml.html#secrets">4.2</a>), <em>GH_PAT</em> and <em>EMAIL</em>. <em>GH_PAT</em> is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section <a href="understanding-yaml.html#github-pat">4.2.1</a> for more). The action also assumes that you are compiling the book to an html format and the output directory is <code>_book</code>.</p>
 <p>Github action for .github/workflow/deploy_bookdown.yml</p>
 <pre><code>on:
   push:
@@ -266,7 +267,7 @@ jobs:
   
 # Need to first create an empty gh-pages branch
 # see https://pkgdown.r-lib.org/reference/deploy_site_github.html
-# and also add secrets for a GITHUB_PAT and EMAIL to the repository
+# and also add secrets for a GH_PAT and EMAIL to the repository
 # gh-action from Cecilapp/GitHub-Pages-deploy
   checkout-and-deploy:
    runs-on: ubuntu-latest
@@ -285,7 +286,7 @@ jobs:
        uses: Cecilapp/GitHub-Pages-deploy@master
        env:
           EMAIL: ${{ secrets.EMAIL }}               # must be a verified email
-          GH_TOKEN: ${{ secrets.GITHUB_PAT }} # https://github.com/settings/tokens
+          GH_TOKEN: ${{ secrets.GH_PAT }} # https://github.com/settings/tokens
           BUILD_DIR: _book/                     # &quot;_site/&quot; by default
     </code></pre>
 <p>This action is performed using two jobs, the first renders html, and the second deploys the html to the gh-pages branch so that it can be viewed using the url &lt;user/org_name&gt;.github.io/&lt;repository_name&gt;. It achieves this by passing an artifact (the <code>_book</code> directory) between jobs. Further information about the action yaml files can be found in chapter <a href="understanding-yaml.html#understanding-yaml">4</a>.</p>
@@ -294,7 +295,7 @@ jobs:
 </div>
 <div id="deploy-blogdown" class="section level2">
 <h2><span class="header-section-number">3.4</span> Action to deploy a blogdown site</h2>
-<p>The github action to deploy a blogdown site is very similar to that of the bookdown action in section <a href="websites-using-pkgdown-bookdown-and-blogdown.html#deploy-bookdown">3.3</a> but runs <code>blogdown::build_site()</code>. There are additional configuration steps beyond using the github action to get the site to be correctly deployed - this is because blogdown uses Hugo and github pages uses Jekyll. It also requires the creation of two GitHub secrets (see section <a href="understanding-yaml.html#secrets">4.2</a>), <em>GITHUB_PAT</em> and <em>EMAIL</em>. <em>GITHUB_PAT</em> is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section <a href="understanding-yaml.html#github-pat">4.2.1</a> for more).</p>
+<p>The github action to deploy a blogdown site is very similar to that of the bookdown action in section <a href="websites-using-pkgdown-bookdown-and-blogdown.html#deploy-bookdown">3.3</a> but runs <code>blogdown::build_site()</code>. There are additional configuration steps beyond using the github action to get the site to be correctly deployed - this is because blogdown uses Hugo and github pages uses Jekyll. It also requires the creation of two GitHub secrets (see section <a href="understanding-yaml.html#secrets">4.2</a>), <em>GH_PAT</em> and <em>EMAIL</em>. <em>GH_PAT</em> is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section <a href="understanding-yaml.html#github-pat">4.2.1</a> for more).</p>
 <p>On an existing blogdown project with git, make sure to add and commit the content you have created, except for <code>public/*</code>. Change the base url in <code>config.toml</code> to <code>baseurl = "/&lt;repo name&gt;/"</code>. Create the empty file <em>public/.nojekyll</em> and add and commit it. This tells github not to use Jekyll when displaying your pages. Follow the steps to create an orphaned gh-pages branch in Section <a href="websites-using-pkgdown-bookdown-and-blogdown.html#ghpages-setup">3.1</a>.</p>
 <p>Github action for .github/workflow/deploy_blogdown.yml</p>
 <pre><code>on:
@@ -325,7 +326,7 @@ jobs:
 
 # Need to first create an empty gh-pages branch
 # see https://pkgdown.r-lib.org/reference/deploy_site_github.html
-# and also add secrets for a GITHUB_PAT and EMAIL to the repository
+# and also add secrets for a GH_PAT and EMAIL to the repository
 # gh-action from Cecilapp/GitHub-Pages-deploy
   checkout-and-deploy:
    runs-on: ubuntu-latest
@@ -344,7 +345,7 @@ jobs:
        uses: Cecilapp/GitHub-Pages-deploy@master
        env:
           EMAIL: ${{ secrets.EMAIL }}               # must be a verified email
-          GH_TOKEN: ${{ secrets.GITHUB_PAT }} # https://github.com/settings/tokens
+          GH_TOKEN: ${{ secrets.GH_PAT }} # https://github.com/settings/tokens
           BUILD_DIR: public/                     # &quot;_site/&quot; by default</code></pre>
 <p>This action will build your blogdown site and then add, commit, and push the resultant files in <code>public/</code> onto your gh-pages branch where they will be viewable at the url &lt;user/org_name&gt;.github.io/&lt;repository_name&gt;.</p>
 <p>To use the above yaml file in your blogdown blog you can add it using <code>usethis</code></p>
