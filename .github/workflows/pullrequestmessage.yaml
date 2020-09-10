@@ -8,6 +8,6 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/github@v1.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           args: comment "Thanks for your input! we will review it in the coming days!"

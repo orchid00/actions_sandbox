@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/first-interaction@v1
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ secrets.GH_TOKEN }}
         issue-message: 'Hi ! there!! thanks for your contribution!, you are awesome! '
         pr-message: 'Hey what an input! please give us a bit of time to review it! We will be in touch soon.'
       

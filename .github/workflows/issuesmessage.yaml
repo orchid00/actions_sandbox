@@ -11,7 +11,7 @@ jobs:
       - name: Comment On New Issues
         uses: actions/github@v1.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           args: comment "Thanks for your issue! we are going to work on that"
   assignme:
@@ -22,7 +22,7 @@ jobs:
       - name: Assign orchid00
         uses: actions/github@v1.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           args: assign @orchid00
     

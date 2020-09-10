@@ -23,7 +23,7 @@ Let's explore the `yaml` code for the first issue message here:
             steps:
             - uses: actions/first-interaction@v1
               with:
-                repo-token: ${{ secrets.GITHUB_TOKEN }}
+                repo-token: ${{ secrets.GH_TOKEN }}
                 issue-message: 'Hi ! there!! thanks for your contribution!, you are awesome! '
                 pr-message: 'Hey what an input! please give us a bit of time to review it! We will be in touch soon.'
   </p>
@@ -65,7 +65,7 @@ jobs:
       - name: <namestep3>
         run: |
           git commit <some file>.md -m 'Re-build <file>.Rmd' || echo "No changes to commit"
-          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
+          git push https://${{github.actor}}:${{secrets.GH_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
 ```
 
 * The `on` parameter tells GitHub what should trigger this action. In this case, we want to check code whenever it is pushed, or on a pull request. The latter is particularly useful because if we're about to merge code into the master branch, we want it to pass tests!
@@ -77,7 +77,7 @@ jobs:
 
 ## GitHub Secrets {#secrets}
 
-[GitHub secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) are a way to use values in your yaml that need to remain secret such as credentials, or information you want to keep private. Commonly this would be a [GitHub personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (_GITHUB_PAT_) that enables the action to perform operations such as _push_. These are set under the repository settings menu.
+[GitHub secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) are a way to use values in your yaml that need to remain secret such as credentials, or information you want to keep private. Commonly this would be a [GitHub personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (_GH_PAT_) that enables the action to perform operations such as _push_. These are set under the repository settings menu.
 
 ```{r, eval = TRUE, echo = FALSE}
 knitr::include_graphics("images/add_secret.png")
