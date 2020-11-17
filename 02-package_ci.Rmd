@@ -21,7 +21,7 @@ devtools::install_github("r-lib/usethis")
 
 ### New project, GitHub first
 
-The CI GitHub actions require a package that is set up with git and GitHub. 
+The CI GitHub actions require a package that is set up with Git and GitHub.
 There are some useful instructions for setting up a new project in the [happygitwithr book](https://happygitwithr.com/new-GitHub-first.html#new-GitHub-first). 
 After setting up the repo in this way, you'll need to add the infrastructure to turn the project into a package. 
 You can do so, for example, with the following command:
@@ -30,19 +30,19 @@ You can do so, for example, with the following command:
 usethis::create_package(path = "path_to_project")
 ```
 
-### Existing package with Github
+### Existing package with GitHub
 
-Make sure that you have Git Hub set up with your package. Refer to https://happygitwithr.com/ for setting up with an existing project.
+Make sure that you have GitHub set up with your package. Refer to https://happygitwithr.com/ for setting up with an existing project.
 
-- [Existing project and package, github first](https://happygitwithr.com/existing-github-first.html#existing-github-first)
+- [Existing project and package, GitHub first](https://happygitwithr.com/existing-github-first.html#existing-github-first)
 
-- [Existing project and package, github last](https://happygitwithr.com/existing-github-last.html#existing-github-last)
+- [Existing project and package, GitHub last](https://happygitwithr.com/existing-github-last.html#existing-github-last)
 
-### Add Github links to DESCRIPTION
+### Add GitHub links to DESCRIPTION
 
 You'll need to point your package to where your GitHub instance is located. 
 The following function populates the URL and BugReports fields of a GitHub-using R package DESCRIPTION file with links to GitHub. 
-If your project is hosted by an enterprise GitHub server this is where you can specify that in the input arguments. 
+If your project is hosted by an enterprise GitHub server, this is where you can specify that in the input arguments. 
 
 ```{r}
 usethis::use_github_links()
@@ -74,7 +74,7 @@ This option sets up a more comprehensive CI check.
 It tests the package on Linux, Windows, as well as Mac-OSX operating systems. 
 It also queries dependencies, caches previous installations of them, and evaluates test coverage using codecov. 
 To make the file work as is, a token for codecov must be added to your secrets page. 
-We explain how to this below!
+We explain how to do this below!
 If you are not interested in syncing your package to codecov, this part is not necessary. 
 
 ## Triggering actions
@@ -84,7 +84,7 @@ If you are not interested in syncing your package to codecov, this part is not n
 
 Now git add, commit the changes and push them to your repo and the action will run! 
 
-On your repository you can see the what action are running under the "Actions" tab.
+On your repository you can see the what actions are running under the "Actions" tab.
 
 ```{r, eval = TRUE, echo = FALSE}
 knitr::include_graphics("images/actions_panel.png")
@@ -92,13 +92,13 @@ knitr::include_graphics("images/actions_panel.png")
 
 ## Did it succeed?
 
-You can get information about the status of your github action by looking under the actions tab and once completed there will be either a green tick or red cross next to the action. By clicking on the action itself while it's running or after it's finished you can view the run logs which can be useful to understand if your action failed.
+You can get information about the status of your GitHub action by looking under the actions tab, and once completed, there will be either a green tick or red cross next to the action. By clicking on the action itself while it's running or after it's finished you can view the run logs, which can be useful to understand if your action failed.
 
 ```{r, eval = TRUE, echo = FALSE}
 knitr::include_graphics("images/actions_panel2.png")
 ```
 
-Further information can be found by clicking on a particular action and there is the option to make this information displayed as a badge on your README by using the create badge button and copying the markdown code into your README.md file.
+Further information can be found by clicking on a particular action, and there is the option to make this information displayed as a badge on your README by using the create badge button and copying the markdown code into your README.md file.
 
 ```{r, eval = TRUE, echo = FALSE}
 knitr::include_graphics("images/rcmd_check_status.png")

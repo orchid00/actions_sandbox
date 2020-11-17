@@ -6,7 +6,7 @@
 knitr::opts_chunk$set(echo = TRUE, cache = FALSE, eval = FALSE)
 ```
 
-We can take testing a step further by setting up an environment that mimics the one we used to train out model, and is set up the same way each time. First we need to set up a *lockfile* for our package that tells R exactly what packages --- including the versions --- should be used to reproduce this 
+We can take testing a step further by setting up an environment that mimics the one we used to train our model and is set up the same way each time. First we need to set up a *lockfile* for our package that tells R exactly what packages --- including the versions --- should be used to reproduce this 
 
 We'll be using the `renv` package, but a word of warning first: this package is still under active development, so this information may quickly become outdated.
 
@@ -14,7 +14,7 @@ Once you've installed `renv`, open the R project containing your package and run
 
 When you open your project in the future, RStudio will automatically load the packages that are recorded in the snapshot, down to the version number. If the specific versions aren't available, it will download them and install them from source, or using available binaries. Try restarting your R environment to see this happen. We can trigger this behaviour manually with `renv::restore()`. To learn more about the `renv` package, [read the introductory article](https://rstudio.github.io/renv/articles/renv.html).
 
-Now we need to configure GitHub actions to use the snapshot we've just set up. In the previous action, we used macOS so that we could take advantage of available package binaries for quick installation. I'm going to be using Ubuntu for this to replicate my person Linux environment, and this means that packages will be installed from source.
+Now we need to configure GitHub actions to use the snapshot we've just set up. In the previous action, we used macOS so that we could take advantage of available package binaries for quick installation. I'm going to be using Ubuntu for this to replicate my personal Linux environment, and this means that packages will be installed from source.
 
 Here's the workflow that I'm using. Read through it and see if you can work out what's going on, and then we'll go through the finer details:
 
