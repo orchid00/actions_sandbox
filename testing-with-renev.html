@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Testing with a reproducible environment | Github actions with R</title>
   <meta name="description" content="An introduction to using github actions with R." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Testing with a reproducible environment | Github actions with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker" />
 
 
-<meta name="date" content="2020-10-06" />
+<meta name="date" content="2020-11-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,8 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -145,8 +147,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="packageci.html"><a href="packageci.html"><i class="fa fa-check"></i><b>2</b> Example workflow to set up continuous integration for packages</a><ul>
 <li class="chapter" data-level="2.1" data-path="packageci.html"><a href="packageci.html#set-up-package"><i class="fa fa-check"></i><b>2.1</b> Set up package</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="packageci.html"><a href="packageci.html#new-project-github-first"><i class="fa fa-check"></i><b>2.1.1</b> New project, GitHub first</a></li>
-<li class="chapter" data-level="2.1.2" data-path="packageci.html"><a href="packageci.html#existing-package-with-github"><i class="fa fa-check"></i><b>2.1.2</b> Existing package with Github</a></li>
-<li class="chapter" data-level="2.1.3" data-path="packageci.html"><a href="packageci.html#add-github-links-to-description"><i class="fa fa-check"></i><b>2.1.3</b> Add Github links to DESCRIPTION</a></li>
+<li class="chapter" data-level="2.1.2" data-path="packageci.html"><a href="packageci.html#existing-package-with-github"><i class="fa fa-check"></i><b>2.1.2</b> Existing package with GitHub</a></li>
+<li class="chapter" data-level="2.1.3" data-path="packageci.html"><a href="packageci.html#add-github-links-to-description"><i class="fa fa-check"></i><b>2.1.3</b> Add GitHub links to DESCRIPTION</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="packageci.html"><a href="packageci.html#actions-for-continuous-integration-checks"><i class="fa fa-check"></i><b>2.2</b> Actions for continuous integration checks</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="packageci.html"><a href="packageci.html#ci-release-check"><i class="fa fa-check"></i><b>2.2.1</b> CI release check</a></li>
@@ -163,7 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#deploy-blogdown"><i class="fa fa-check"></i><b>3.4</b> Action to deploy a blogdown site</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="understanding-yaml.html"><a href="understanding-yaml.html"><i class="fa fa-check"></i><b>4</b> So what’s actually going on in the yaml file?</a><ul>
-<li class="chapter" data-level="4.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#r-syntax-options"><i class="fa fa-check"></i><b>4.1</b> R Syntax options</a></li>
+<li class="chapter" data-level="4.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#github-action-options"><i class="fa fa-check"></i><b>4.1</b> GitHub action options</a></li>
 <li class="chapter" data-level="4.2" data-path="understanding-yaml.html"><a href="understanding-yaml.html#secrets"><i class="fa fa-check"></i><b>4.2</b> GitHub Secrets</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#github-pat"><i class="fa fa-check"></i><b>4.2.1</b> Personal access tokens</a></li>
 </ul></li>
@@ -192,11 +194,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="testing-with-renev" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Testing with a reproducible environment</h1>
-<p>We can take testing a step further by setting up an environment that mimics the one we used to train out model, and is set up the same way each time. First we need to set up a <em>lockfile</em> for our package that tells R exactly what packages — including the versions — should be used to reproduce this</p>
+<p>We can take testing a step further by setting up an environment that mimics the one we used to train our model and is set up the same way each time. First we need to set up a <em>lockfile</em> for our package that tells R exactly what packages — including the versions — should be used to reproduce this</p>
 <p>We’ll be using the <code>renv</code> package, but a word of warning first: this package is still under active development, so this information may quickly become outdated.</p>
 <p>Once you’ve installed <code>renv</code>, open the R project containing your package and run <code>renv::snapshot()</code>. There will be a prompt for your consent to alter some files in your project and system. This function will automatically determine the dependencies used in your package, as well as what packages (and versions) are installed on your system, and will record this information in a lock file.</p>
 <p>When you open your project in the future, RStudio will automatically load the packages that are recorded in the snapshot, down to the version number. If the specific versions aren’t available, it will download them and install them from source, or using available binaries. Try restarting your R environment to see this happen. We can trigger this behaviour manually with <code>renv::restore()</code>. To learn more about the <code>renv</code> package, <a href="https://rstudio.github.io/renv/articles/renv.html">read the introductory article</a>.</p>
-<p>Now we need to configure GitHub actions to use the snapshot we’ve just set up. In the previous action, we used macOS so that we could take advantage of available package binaries for quick installation. I’m going to be using Ubuntu for this to replicate my person Linux environment, and this means that packages will be installed from source.</p>
+<p>Now we need to configure GitHub actions to use the snapshot we’ve just set up. In the previous action, we used macOS so that we could take advantage of available package binaries for quick installation. I’m going to be using Ubuntu for this to replicate my personal Linux environment, and this means that packages will be installed from source.</p>
 <p>Here’s the workflow that I’m using. Read through it and see if you can work out what’s going on, and then we’ll go through the finer details:</p>
 <pre><code>on: [push, pull_request]
 

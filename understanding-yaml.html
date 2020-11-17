@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 So what’s actually going on in the yaml file? | Github actions with R</title>
   <meta name="description" content="An introduction to using github actions with R." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 So what’s actually going on in the yaml file? | Github actions with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker" />
 
 
-<meta name="date" content="2020-10-06" />
+<meta name="date" content="2020-11-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,8 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -145,8 +147,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="packageci.html"><a href="packageci.html"><i class="fa fa-check"></i><b>2</b> Example workflow to set up continuous integration for packages</a><ul>
 <li class="chapter" data-level="2.1" data-path="packageci.html"><a href="packageci.html#set-up-package"><i class="fa fa-check"></i><b>2.1</b> Set up package</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="packageci.html"><a href="packageci.html#new-project-github-first"><i class="fa fa-check"></i><b>2.1.1</b> New project, GitHub first</a></li>
-<li class="chapter" data-level="2.1.2" data-path="packageci.html"><a href="packageci.html#existing-package-with-github"><i class="fa fa-check"></i><b>2.1.2</b> Existing package with Github</a></li>
-<li class="chapter" data-level="2.1.3" data-path="packageci.html"><a href="packageci.html#add-github-links-to-description"><i class="fa fa-check"></i><b>2.1.3</b> Add Github links to DESCRIPTION</a></li>
+<li class="chapter" data-level="2.1.2" data-path="packageci.html"><a href="packageci.html#existing-package-with-github"><i class="fa fa-check"></i><b>2.1.2</b> Existing package with GitHub</a></li>
+<li class="chapter" data-level="2.1.3" data-path="packageci.html"><a href="packageci.html#add-github-links-to-description"><i class="fa fa-check"></i><b>2.1.3</b> Add GitHub links to DESCRIPTION</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="packageci.html"><a href="packageci.html#actions-for-continuous-integration-checks"><i class="fa fa-check"></i><b>2.2</b> Actions for continuous integration checks</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="packageci.html"><a href="packageci.html#ci-release-check"><i class="fa fa-check"></i><b>2.2.1</b> CI release check</a></li>
@@ -163,7 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="websites-using-pkgdown-bookdown-and-blogdown.html"><a href="websites-using-pkgdown-bookdown-and-blogdown.html#deploy-blogdown"><i class="fa fa-check"></i><b>3.4</b> Action to deploy a blogdown site</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="understanding-yaml.html"><a href="understanding-yaml.html"><i class="fa fa-check"></i><b>4</b> So what’s actually going on in the yaml file?</a><ul>
-<li class="chapter" data-level="4.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#r-syntax-options"><i class="fa fa-check"></i><b>4.1</b> R Syntax options</a></li>
+<li class="chapter" data-level="4.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#github-action-options"><i class="fa fa-check"></i><b>4.1</b> GitHub action options</a></li>
 <li class="chapter" data-level="4.2" data-path="understanding-yaml.html"><a href="understanding-yaml.html#secrets"><i class="fa fa-check"></i><b>4.2</b> GitHub Secrets</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="understanding-yaml.html"><a href="understanding-yaml.html#github-pat"><i class="fa fa-check"></i><b>4.2.1</b> Personal access tokens</a></li>
 </ul></li>
@@ -213,17 +215,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </details>
 <p>or here <a href="https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/greetings.yml">https://github.com/ropenscilabs/CIsandbox/blob/master/.github/workflows/greetings.yml</a>.</p>
-<p>Translated that says, the workflow action <strong>name</strong> is ‘Greetings’ is triggered on pull requests and issues. It will start a job
-with the name greeting, and will run on a <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/core-concepts-for-github-actions#runner">runner</a> for the example it is called ubuntu-latest. Then, each job has <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/core-concepts-for-github-actions#step">steps</a> that will set up the environment in the runner with a few options. See more about the <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions">syntax</a>.</p>
-<p>A few examples:</p>
-<pre><code>`on` can be `issues`, `pull`, `pull_request` you can use one or many as `[pull, pull_request]`
-
-`uses`: `actions/checkout@master` or for the first `actions/first-interaction@v1`</code></pre>
-<div id="r-syntax-options" class="section level2">
-<h2><span class="header-section-number">4.1</span> R Syntax options</h2>
-<p>Change the &lt;customise bits&gt;</p>
+<p>Translated, that says that the workflow action <strong>name</strong> is ‘Greetings’ and is triggered on pull requests and issues. It will start a job
+with the name <em>greeting</em>, and will run on a <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/core-concepts-for-github-actions#runner">runner</a> called <em>ubuntu-latest</em>. Then, each job has <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/core-concepts-for-github-actions#step">steps</a> (here there is only one) that will pass commands to the runner or call externally-defined actions, possibly passing parameter values to those actions or setting up the environment by defining environment variables. See more about the <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions">syntax</a>.</p>
+<div id="github-action-options" class="section level2">
+<h2><span class="header-section-number">4.1</span> GitHub action options</h2>
+<p>Change the &lt;customizable bits&gt; as needed:</p>
 <pre><code>on:
   push:
+  pull-request:
 
 name: &lt;nameyouraction&gt;
 
@@ -244,20 +243,20 @@ jobs:
           git commit &lt;some file&gt;.md -m &#39;Re-build &lt;file&gt;.Rmd&#39; || echo &quot;No changes to commit&quot;
           git push https://${{github.actor}}:${{secrets.GH_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo &quot;No changes to commit&quot;</code></pre>
 <ul>
-<li>The <code>on</code> parameter tells GitHub what should trigger this action. In this case, we want to check code whenever it is pushed, or on a pull request. The latter is particularly useful because if we’re about to merge code into the master branch, we want it to pass tests!</li>
+<li>The <code>on</code> parameter tells GitHub what should trigger this action. In this case, we want to check code whenever it is pushed, or on a pull request. The latter is particularly useful in the case of a CI action because if we’re about to merge code into the master branch, we want it to pass the tests!</li>
 <li>The <code>name</code> of the action should be something that helps us identify at a glance what the action is doing. This is shown on github.com in the Actions tab of the repository.</li>
-<li><code>runs-on</code> tells GitHub what sort of environment should run the job. These environments are called “runners”. GitHub supports Ubuntu, macOS and Windows Server, as well as support for self-hosted runners.</li>
-<li><code>uses</code> allows us to run other actions as part of our action. In this case, we’re calling on actions that are defined in other repositories. The first action checks out the contents of our repository, and then sets up R.</li>
-<li>The remaining steps are the commands we want to run as part of our action, each with a name. Here we’re installing the dependencies of our package, as well as the <code>rcmdcheck</code> package we use to check the package in our repository. Finally, we’re executing the command that checks the package.</li>
+<li><code>runs-on</code> tells GitHub what sort of environment should run the job. These environments are called “runners”. GitHub supports Ubuntu, macOS and Windows Server, as well as self-hosted runners.</li>
+<li><code>uses</code> allows us to run other actions as part of our action. In this case, we’re calling on actions that are defined in other repositories. The first action checks out the contents of our repository; the second and third then set up R and Pandoc.</li>
+<li>The remaining steps, each with a name, contain the commands we want to run as part of our action. Here we’re installing the dependencies of our package. (In the R-CMD-check action produced by <code>usethis::use_github_action_check_release()</code> (see section 2.2.1), we install the <code>rcmdcheck</code> package as well—it’s what we use to check the package in our repository—and then we go ahead and do the check by calling the package-checking function it provides.)</li>
 </ul>
 </div>
 <div id="secrets" class="section level2">
 <h2><span class="header-section-number">4.2</span> GitHub Secrets</h2>
-<p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets">GitHub secrets</a> are a way to use values in your yaml that need to remain secret such as credentials, or information you want to keep private. Commonly this would be a <a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line">GitHub personal access token</a> (<em>GH_PAT</em>) that enables the action to perform operations such as <em>push</em>. These are set under the repository settings menu.</p>
+<p><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets">GitHub secrets</a> are a way to use values in your yaml that need to remain secret, such as credentials or information you want to keep private. Commonly this would be a <a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line">GitHub personal access token</a> (<em>GH_PAT</em>) that enables the action to perform operations such as <em>push</em>. These are set under the repository settings menu.</p>
 <p><img src="images/add_secret.png" /><!-- --></p>
 <div id="github-pat" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Personal access tokens</h3>
-<p>Personal access tokens can be generated with differing levels of authority. To create one for your account got to <a href="https://github.com/settings/tokens" class="uri">https://github.com/settings/tokens</a> and click “Generate new token”. Then you can copy the value of the token into a secret for your repository so that a GitHub action can be authenticated as you.</p>
+<p>Personal access tokens can be generated with differing levels of authority. To create one for your account, go to <a href="https://github.com/settings/tokens" class="uri">https://github.com/settings/tokens</a> and click “Generate new token”. Then you can copy the value of the token into a secret for your repository so that a GitHub action can be authenticated as you.</p>
 
 </div>
 </div>

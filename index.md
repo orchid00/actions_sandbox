@@ -1,7 +1,7 @@
 --- 
 title: "Github actions with R"
 author: "Chris Brown, Murray Cadzow, Paula A Martinez, Rhydwyn McGuire, David Neuzerling, David Wilkinson, Saras Windecker"
-date: "2020-10-06"
+date: "2020-11-17"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [packages.bib]
@@ -75,13 +75,13 @@ We experimented with setting up continuous integration with a reproducible envir
 
 ## More information and useful links
 
-- R specific GitHub actions [examples](https://github.com/r-lib/actions/tree/master/examples) from r-lib
+- R-specific GitHub actions [examples](https://github.com/r-lib/actions/tree/master/examples) from r-lib
 - `use_github_action` function and similar functions help [documentation](https://usethis.r-lib.org/reference/github_actions.html?q=#arguments) 
 - [Glossary of actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/core-concepts-for-github-actions)
 - [Workflow syntax for GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)
 
 :tada: 
-Now you know that are GitHub actions, and where to find more information about those!
+Now you know what GitHub actions are and where to find more information about them!
 
 ---
 
