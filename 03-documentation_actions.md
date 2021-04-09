@@ -68,7 +68,7 @@ Now we need to `git add` and `commit` the yaml file, and `push` the changes to G
 
 ## Action to deploy a bookdown site {#deploy-bookdown}
 
-The following yaml template will run `bookdown::render_book()` on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section \@ref(ghpages-setup). It also requires the creation of two GitHub secrets (see section \@ref(secrets)), _GH_PAT_ and _EMAIL_. _GH_PAT_ is a personal access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see section \@ref(github-pat) for more). The action also assumes that you are compiling the book to an html format and the output directory is `_book`.
+The following yaml template will run `bookdown::render_book()` on index.Rmd and then deploy the resulting html files onto the gh-pages branch that was created as part of section \@ref(ghpages-setup). It also requires the creation of two GitHub secrets (see section \@ref(secrets)), secrets.EMAIL and secrets.GITHUB_TOKEN. GITHUB_TOKEN is (new from Cecilapp v3)[https://github.com/Cecilapp/GitHub-Pages-deploy], it is an access token that has at least repository access (which means you can see the settings of the repository). Create the token in your personal settings and then copy the value into the secrets settings for the repository (see Github docs [About the GITHUB_TOKEN secret](https://docs.github.com/en/actions/reference/authentication-in-a-workflow) for more). The action also assumes that you are compiling the book to an html format and the output directory is `_book`.
 
 Github action for .github/workflow/deploy_bookdown.yml
 ```
@@ -115,11 +115,13 @@ jobs:
          # Destination path
          path: _book # optional
      - name: Deploy to GitHub Pages
-       uses: Cecilapp/GitHub-Pages-deploy@master
+       uses: Cecilapp/GitHub-Pages-deploy@v3
        env:
-          EMAIL: ${{ secrets.EMAIL }}               # must be a verified email
-          GH_TOKEN: ${{ secrets.GH_PAT }} # https://github.com/settings/tokens
-          BUILD_DIR: _book/                     # "_site/" by default
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}# https://github.com/settings/tokens
+       with:
+          build_dir: _book/ # "_site/" by default
+          email: ${{ secrets.EMAIL }}  # must be a verified email
+              
     
 ``` 
 This action is performed using two jobs, the first renders html, and the second deploys the html to the gh-pages branch so that it can be viewed using the url \<user/org_name>.github.io/\<repository_name>. It achieves this by passing an artifact (the `_book` directory) between jobs. Further information about the action yaml files can be found in chapter \@ref(understanding-yaml).
@@ -183,11 +185,12 @@ jobs:
          # Destination path
          path: public # optional
      - name: Deploy to GitHub Pages
-       uses: Cecilapp/GitHub-Pages-deploy@master
+       uses: Cecilapp/GitHub-Pages-deploy@v3
        env:
-          EMAIL: ${{ secrets.EMAIL }}               # must be a verified email
-          GH_TOKEN: ${{ secrets.GH_PAT }} # https://github.com/settings/tokens
-          BUILD_DIR: public/                     # "_site/" by default
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}# https://github.com/settings/tokens
+       with:
+          build_dir: public/                     # "_site/" by default
+          email: ${{ secrets.EMAIL }}  # must be a verified email 
 ```
 
 This action will build your blogdown site and then add, commit, and push the resultant files in `public/` onto your gh-pages branch where they will be viewable at the url \<user/org_name>.github.io/\<repository_name>.
