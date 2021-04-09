@@ -3,13 +3,10 @@ on:
      branches:
        - main
 
-
-
-name: deployblog
+name: blogdown
 
 jobs:
   build:
-    name: Render-Blog
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -23,6 +20,7 @@ jobs:
       - name: Install pandoc
         run: |
           brew install pandoc
+          
       - name: Cache Renv packages
         uses: actions/cache@v2
         with:
@@ -34,41 +32,32 @@ jobs:
         run: |
           R -e 'install.packages("renv")'
           R -e 'renv::restore()'
+          
       - name: Install hugo
         run: |
           R -e 'blogdown::install_hugo()'
+          
       - name: Build site
         run: |
           R -e 'blogdown::build_site(TRUE)'
+          
       - name: Install npm
         uses: actions/setup-node@v1
-        with:
-          name: public
-          path: public/
 
 # Need to first create an empty gh-pages branch
 # see https://pkgdown.r-lib.org/reference/deploy_site_github.html
 # and also add secret EMAIL to the repository
 # gh-action from Cecilapp/GitHub-Pages-deploy
-  checkout-and-deploy:
+  deploy:
    runs-on: ubuntu-latest
    needs: blogdown
    steps:
-     - name: Checkout
-       uses: actions/checkout@master
-     - name: Download artifact
-       uses: actions/download-artifact@v1.0.0
-       with:
-         # Artifact name
-         name: public # optional
-         # Destination path
-         path: public # optional
      - name: Deploy to GitHub Pages
        uses: Cecilapp/GitHub-Pages-deploy@v3
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        with:
          email:  ${{ secrets.EMAIL }} # must be a verified email
-         build_dir: public/                     # "_site/" by default
+         build_dir: ./public                     # "_site/" by default
 
 
