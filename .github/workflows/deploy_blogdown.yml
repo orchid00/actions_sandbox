@@ -30,7 +30,7 @@ jobs:
 
       - name: Install packages
         run: |
-          R -e 'install.packages(c("renv", "blogdown"))
+          R -e 'install.packages(c("renv", "blogdown"))'
           R -e 'renv::restore()'
           
       - name: Install hugo
