@@ -50,7 +50,6 @@ jobs:
 # gh-action from Cecilapp/GitHub-Pages-deploy
   deploy:
    runs-on: ubuntu-latest
-   needs: blogdown
    steps:
      - name: Deploy to GitHub Pages
        uses: Cecilapp/GitHub-Pages-deploy@v3
