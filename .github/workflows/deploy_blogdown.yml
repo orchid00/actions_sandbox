@@ -8,9 +8,8 @@ on:
 name: deployblog
 
 jobs:
-  blogdown:
-    name: Render-Blog
   build:
+    name: Render-Blog
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
