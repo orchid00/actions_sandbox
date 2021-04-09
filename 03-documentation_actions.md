@@ -117,7 +117,7 @@ jobs:
      - name: Deploy to GitHub Pages
        uses: Cecilapp/GitHub-Pages-deploy@v3
        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}# https://github.com/settings/tokens
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        with:
           build_dir: _book/ # "_site/" by default
           email: ${{ secrets.EMAIL }}  # must be a verified email
@@ -187,7 +187,7 @@ jobs:
      - name: Deploy to GitHub Pages
        uses: Cecilapp/GitHub-Pages-deploy@v3
        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}# https://github.com/settings/tokens
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        with:
           build_dir: public/                     # "_site/" by default
           email: ${{ secrets.EMAIL }}  # must be a verified email 
