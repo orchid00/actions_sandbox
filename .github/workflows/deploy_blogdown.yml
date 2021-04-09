@@ -10,18 +10,39 @@ name: deployblog
 jobs:
   blogdown:
     name: Render-Blog
+  build:
     runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
-      - uses: r-lib/actions/setup-pandoc@v1
-      - name: Install rmarkdown
-        run: Rscript -e 'install.packages(c("rmarkdown","blogdown"))'
-      - name: install hugo
-        run: Rscript -e 'blogdown::install_hugo()'
-      - name: Render blog
-        run: Rscript -e 'blogdown::build_site()'
-      - uses: actions/upload-artifact@v1
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v1
+
+      - name: Install pandoc
+        run: |
+          brew install pandoc
+      - name: Cache Renv packages
+        uses: actions/cache@v2
+        with:
+          path: $HOME/.local/share/renv
+          key: r-${{ hashFiles('renv.lock') }}
+          restore-keys: r-
+
+      - name: Install packages
+        run: |
+          R -e 'install.packages("renv")'
+          R -e 'renv::restore()'
+      - name: Install hugo
+        run: |
+          R -e 'blogdown::install_hugo()'
+      - name: Build site
+        run: |
+          R -e 'blogdown::build_site(TRUE)'
+      - name: Install npm
+        uses: actions/setup-node@v1
         with:
           name: public
           path: public/
